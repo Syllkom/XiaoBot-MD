@@ -1,6 +1,6 @@
 [![Xiao-Intalaci-n.jpg](https://i.postimg.cc/ZKcV4ssL/Xiao-Intalaci-n.jpg)](https://postimg.cc/XprwgLbZ)
 
-## DamejiBot-MD
+## XiaoBot-MD
 
 WhatsApp simple bot
 ## Instalación en Panel
