@@ -35,7 +35,7 @@ Hostear XiaoBot-MD:
    51933777999
     ```
 
-4. **Listo ya tienes DamejiBot--MD en tu WhatsApp**
+4. **Listo ya tienes XiaoBot-MD en tu WhatsApp**
 
    Recuerda actualizar la carpeta "XiaoSession" solo si es necesario. 
     ```bash
