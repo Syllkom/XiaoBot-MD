@@ -11,7 +11,7 @@ Como hostear DamejiBot-MD:
 
    Sube todos los archivos a tu panel hosting:
    ```bash
-   case.js
+   Xiao.js
    database.zip
    settings.js
    package-lock.json
@@ -32,14 +32,14 @@ Como hostear DamejiBot-MD:
 
    Ejemplo:
     ```bash
-   51933479416
+   51933777999
     ```
 
 4. **Listo ya tienes DamejiBot--MD en tu WhatsApp**
 
-   Recuerda actualizar la carpeta "DamejiSesion" solo si es necesario. 
+   Recuerda actualizar la carpeta "XiaoSession" solo si es necesario. 
     ```bash
-   DamejiSesion
+   XiaoSession
     ```
 
 En caso de presentar algun error o duda, le invito a comunicármela para su pronta resolución.
