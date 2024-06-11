@@ -5,7 +5,7 @@
 WhatsApp simple bot
 ## Instalación en Panel
 
-Como hostear DamejiBot-MD:
+Hostear XiaoBot-MD:
 
 1. **Entra a tu panel hosting**
 
