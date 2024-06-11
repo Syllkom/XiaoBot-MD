@@ -1,4 +1,4 @@
-[Xiao-Intalaci-n.jpg](https://postimg.cc/XprwgLbZ)
+[![Xiao-Intalaci-n.jpg](https://i.postimg.cc/ZKcV4ssL/Xiao-Intalaci-n.jpg)](https://postimg.cc/XprwgLbZ)
 
 ## DamejiBot-MD
 
