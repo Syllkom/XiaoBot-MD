@@ -10,7 +10,7 @@
         <a href="https://github.com/DyrKom"><img title="Author"    src="https://img.shields.io/badge/Author-お Dyr. Kom-red.svg?style=for-the-badge&logo=github"></a>
     </p>
     <p>
-        <a href="https://github.com/DyrKom"><img title="Followers" src="https://img.shields.io/github/followers/DyrKom?color=blue&style=flat-square"></a>
+        <a href="https://github.com/DyrKom"><img title="Followers" src="https://img.shields.io/github/followers/DyrKom?color=red&style=flat-square"></a>
         <a href="https://github.com/DyrKom/XiaoBot-MD/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/DyrKom/XiaoBot-MD?color=red&style=flat-square"></a>
         <a href="https://github.com/DyrKom/XiaBot-MD/network/members"><img title="Forks" src="http://img.shields.io/github/forks/DyrKom/XiaoBot-MD?color=red&style=flat-square"></a>
         <a href="#"><img src="https://img.shields.io/badge/MANTENIMIENTO-SI-blue.svg"</a>
