@@ -73,8 +73,8 @@ Hostear XiaoBot-MD:
 > Bot en beta, con el tiempo añadiré mas comandos
 
 - [x] Configuración de grupo
-- [ ] Setppgruop (actualizar img grupo)
-- [ ] Setppbot (actualizar img perfil)
+- [x] Setppgruop (actualizar img grupo)
+- [x] Setppbot (actualizar img perfil)
 - [x] antilink, antilink2
 - [x] Crear sticker de image/video/gif/url
 - [x] Smeme (añadir texto a sticker)
