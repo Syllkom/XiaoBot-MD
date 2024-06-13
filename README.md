@@ -82,6 +82,9 @@ Hostear XiaoBot-MD:
 - [ ] Otros
 
 En caso de presentar algun error o duda, le invito a comunicármela para su pronta resolución.
+お Dyr. Kom
 - [![WhatsApp Group](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/51933479416)
 
+## 🎐 Repo Stats 
 
+![github card](https://github-readme-stats.vercel.app/api/pin/?username=DyrKom&repo=XiaoBot-MD&theme=chartreuse-dark)
