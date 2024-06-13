@@ -1,5 +1,5 @@
 <p align="center"> 
-<a href="https://github.com/DyrKom"><img src="http://readme-typing-svg.herokuapp.com?font=mono&size=17&duration=4000&color=F7B11B&center=falso&vCenter=falso&lines=XiaoBot-MD++🏮;Gracias+por+visitar+el+repositorio+de+XiaoBot-MD.+%F0%9F%92%96" height="90px"></a> 
+<a href="https://github.com/DyrKom"><img src="http://readme-typing-svg.herokuapp.com?font=mono&size=17&duration=4000&color=F7B11B&center=falso&vCenter=falso&lines=🏮 XiaoBot-MD+; WhatsApp+simple+bot" height="90px"></a> 
 </p>
 
 <h1 align="center">‧ 🏮 XiaoBot - MD 🎐 ‧
