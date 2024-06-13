@@ -68,6 +68,16 @@ Hostear XiaoBot-MD:
     ```bash
    XiaoSession
     ```
+## <img src="https://i.pinimg.com/originals/73/69/6e/73696e022df7cd5cb3d999c6875361dd.gif" alt="Características" width="42" height="42"> Características
+
+> Bot en beta, con el tiempo añadiré mas comandos
+
+- [x] Configuración de grupo
+- [x] antilink, antilink2
+- [x] Crear sticker de image/video/gif/url
+- [x] Smeme (añadir texto a sticker)
+- [x] NFS
+- [ ] Otros
 
 En caso de presentar algun error o duda, le invito a comunicármela para su pronta resolución.
 - [![WhatsApp Group](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/51933479416)
