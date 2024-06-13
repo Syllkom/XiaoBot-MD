@@ -88,3 +88,6 @@ En caso de presentar algun error o duda, le invito a comunicármela para su pron
 ## 🎐 Repo Stats 
 
 ![github card](https://github-readme-stats.vercel.app/api/pin/?username=DyrKom&repo=XiaoBot-MD&theme=chartreuse-dark)
+
+## Créditos 
+<a href="https://github.com/DyrKom"><img src="https://github.com/DyrKom.png" width="100" height="100" alt="DyrKom"/></a>
