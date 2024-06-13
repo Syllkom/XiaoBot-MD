@@ -29,14 +29,11 @@
 > Panel Host
 > WhatsApp
 ```
-### XiaoBot-MD
+## `Instalación en Panel host`
 
-WhatsApp simple bot
-## Instalación en Panel
+> Hostear XiaoBot-MD:
 
-Hostear XiaoBot-MD:
-
-1. **Entra a tu panel hosting**
+1. **Entra a tu panel host**
 
    Sube todos los archivos a tu panel hosting:
    ```bash
