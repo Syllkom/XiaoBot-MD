@@ -93,8 +93,8 @@ En caso de presentar algun error o duda, le invito a comunicármela para su pron
 <a href="https://github.com/DyrKom"><img src="https://github.com/DyrKom.png" width="100" height="100" alt="DyrKom"/></a>
 ---------
 <div align="center">
-  <h1 align="center">Editor y Propietario de la Bot</h1>
+  <h1 align="center">Creador y Propietario del Bot</h1>
 
-<a href="https://github.com/DyrKom"><img src="https://tinyurl.com/yc4b2sbe" width="300" height="300" alt="お Dyr. Kom"/></a>
+<a href="https://github.com/DyrKom"><img src="https://tinyurl.com/9bsjktdw" width="1472" height="828" alt="お Dyr. Kom"/></a>
 
 `© XiaoBot - MD / DyrKom - By お Dyr. Kom`
