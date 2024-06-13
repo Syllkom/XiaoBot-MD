@@ -7,20 +7,27 @@
         <a href="#"><img title="simple-whatsapp-bot" src="https://img.shields.io/badge/-SIMPLE--WHATSAPP--BOT-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
     </p>
     <p>
-        <a href="https://github.com/StarlightsTeam"><img title="Author"    src="https://img.shields.io/badge/Author-おDaniel-purple.svg?style=for-the-badge&logo=github"></a>
+        <a href="https://github.com/DyrKom"><img title="Author"    src="https://img.shields.io/badge/Author-お Dyr. Kom-purple.svg?style=for-the-badge&logo=github"></a>
     </p>
     <p>
-        <a href="https://github.com/StarlightsTeam"><img title="Followers" src="https://img.shields.io/github/followers/StarlightsTeam?color=blue&style=flat-square"></a>
-        <a href="https://github.com/StarlightsTeam/Sumi-Sakurasawa/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/StarlightsTeam/Sumi-Sakurasawa?color=red&style=flat-square"></a>
-        <a href="https://github.com/StarlightsTeam/Sumi-Sakurasawa/network/members"><img title="Forks" src="http://img.shields.io/github/forks/StarlightsTeam/Sumi-Sakurasawa?color=red&style=flat-square"></a>
+        <a href="https://github.com/DyrKom"><img title="Followers" src="https://img.shields.io/github/followers/DyrKom?color=blue&style=flat-square"></a>
+        <a href="https://github.com/DyrKom/XiaoBot-MD/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/DyrKom/XiaoBot-MD?color=red&style=flat-square"></a>
+        <a href="https://github.com/DyrKom/XiaBot-MD/network/members"><img title="Forks" src="http://img.shields.io/github/forks/DyrKom/XiaoBot-MD?color=red&style=flat-square"></a>
         <a href="#"><img src="https://img.shields.io/badge/MANTENIMIENTO-SI-blue.svg"</a>
-        <img src="https://img.shields.io/github/repo-size/StarlightsTeam/Sumi-Sakurasawa" /> <br>
+        <img src="https://img.shields.io/github/repo-size/DyrKom/XiaoBot-MD" /> <br>
    </p>
    <p>
 </h1>
 *
 ---------
-## XiaoBot-MD
+
+## <img src="https://i0.wp.com/i230.photobucket.com/albums/ee124/joaclint/joaclint_istgud/ruedas.gif" alt="Herramientas" width="35" height="35"> Herramientas
+
+```bash
+> Panel Host
+> WhatsApp
+```
+### XiaoBot-MD
 
 WhatsApp simple bot
 ## Instalación en Panel
