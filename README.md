@@ -95,6 +95,6 @@ En caso de presentar algun error o duda, le invito a comunicármela para su pron
 <div align="center">
   <h1 align="center">Creador y Propietario del Bot</h1>
 
-<a href="https://github.com/DyrKom"><img src="https://tinyurl.com/9bsjktdw" width="1472" height="828" alt="お Dyr. Kom"/></a>
+<a href="https://github.com/DyrKom"><img src="https://tinyurl.com/5n6pff2f" width="300" height="300" alt="お Dyr. Kom"/></a>
 
-`© XiaoBot - MD / DyrKom - By お Dyr. Kom`
+`© 2024 Anime & Onigiri All rights reserved`
