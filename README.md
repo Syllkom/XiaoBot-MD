@@ -19,8 +19,6 @@
    <p>
 </h1>
 
----------
-
 ## <img src="https://i0.wp.com/i230.photobucket.com/albums/ee124/joaclint/joaclint_istgud/ruedas.gif" alt="Herramientas" width="35" height="35"> Herramientas
 
 ```bash
@@ -39,30 +37,46 @@ Hostear XiaoBot-MD:
    Sube todos los archivos a tu panel hosting:
    ```bash
    Xiao.js
+   ```
+   ```bash
    database.zip
+   ```
+   ```bash
    settings.js
+   ```
+   ```bash
    package-lock.json
+   ```
+   ```bash
    package.json
+   ```
+   ```bash
    index.js
+   ```
+   ```bash
    module.js
+   ```
+   ```bash
    lib.zip
    ```
    
-2. **Descomprime los archivos:**
+3. **Descomprime los archivos:**
 
     ```bash
    database.zip
+    ```
+    ```bash
    lib.zip
     ```
     
-3. **Pon el número que será bot, mas el código de país pará obtener el código de emparejamiento**
+4. **Pon el número que será bot, mas el código de país pará obtener el código de emparejamiento**
 
    Ejemplo:
     ```bash
    51933777999
     ```
 
-4. **Listo ya tienes XiaoBot-MD en tu WhatsApp**
+5. **Listo ya tienes XiaoBot-MD en tu WhatsApp**
 
    Recuerda actualizar la carpeta "XiaoSession" solo si es necesario. 
     ```bash
