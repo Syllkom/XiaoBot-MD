@@ -4,8 +4,7 @@
 
 [![Xiao-Intalaci-n.jpg](https://i.postimg.cc/ZKcV4ssL/Xiao-Intalaci-n.jpg)](https://postimg.cc/XprwgLbZ)
 <p align="center">
-    <a href="#"><img title="simple-whatsapp-bot" src="https://img.shields.io/badge/-SIMPLE--WHATSAPP--BOT-blue?colorA=%23ff0000&colorB=%230000ff&style=for-the-badge"></a>
-</p>
+        <a href="#"><img title="simple-whatsapp-bot" src="https://img.shields.io/badge/-SIMPLE--WHATSAPP--BOT-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
     </p>
     <p>
         <a href="https://github.com/DyrKom"><img title="Author"    src="https://img.shields.io/badge/Author-お Dyr. Kom-purple.svg?style=for-the-badge&logo=github"></a>
