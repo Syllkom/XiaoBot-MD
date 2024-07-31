@@ -1,5 +1,5 @@
 <p align="center"> 
-<a href="https://github.com/DyrKom"><img src="http://readme-typing-svg.herokuapp.com?font=mono&size=17&duration=4000&color=F7B11B&center=falso&vCenter=falso&lines=🏮 XiaoBot-MD+; WhatsApp+simple+bot" height="90px"></a> 
+<a href="https://github.com/Syllkom"><img src="http://readme-typing-svg.herokuapp.com?font=mono&size=17&duration=4000&color=F7B11B&center=falso&vCenter=falso&lines=🏮 XiaoBot-MD+; WhatsApp+simple+bot" height="90px"></a> 
 </p>
 
 <h1 align="center">‧ 🏮 XiaoBot - MD 🎐 ‧
@@ -11,14 +11,14 @@
         <a href="#"><img title="simple-whatsapp-bot" src="https://img.shields.io/badge/-SIMPLE--WHATSAPP--BOT-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
     </p>
     <p>
-        <a href="https://github.com/DyrKom"><img title="Author"    src="https://img.shields.io/badge/Author-お Dyr. Kom-red.svg?style=for-the-badge&logo=github"></a>
+        <a href="https://github.com/Syllkom"><img title="Author"    src="https://img.shields.io/badge/Author-おSyllkom-red.svg?style=for-the-badge&logo=github"></a>
     </p>
     <p>
-        <a href="https://github.com/DyrKom"><img title="Followers" src="https://img.shields.io/github/followers/DyrKom?color=red&style=flat-square"></a>
-        <a href="https://github.com/DyrKom/XiaoBot-MD/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/DyrKom/XiaoBot-MD?color=red&style=flat-square"></a>
-        <a href="https://github.com/DyrKom/XiaBot-MD/network/members"><img title="Forks" src="http://img.shields.io/github/forks/DyrKom/XiaoBot-MD?color=red&style=flat-square"></a>
+        <a href="https://github.com/Syllkom"><img title="Followers" src="https://img.shields.io/github/followers/DyrKom?color=red&style=flat-square"></a>
+        <a href="https://github.com/Syllkom/XiaoBot-MD/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/DyrKom/XiaoBot-MD?color=red&style=flat-square"></a>
+        <a href="https://github.com/Syllkom/XiaBot-MD/network/members"><img title="Forks" src="http://img.shields.io/github/forks/Syllkom/XiaoBot-MD?color=red&style=flat-square"></a>
         <a href="#"><img src="https://img.shields.io/badge/MANTENIMIENTO-SI-blue.svg"</a>
-        <img src="https://img.shields.io/github/repo-size/DyrKom/XiaoBot-MD" /> <br>
+        <img src="https://img.shields.io/github/repo-size/Syllkom/XiaoBot-MD" /> <br>
    </p>
    <p>
 </h1>
@@ -94,6 +94,7 @@
 - [x] Crear sticker de image/video/gif/url
 - [x] Smeme (añadir texto a sticker)
 - [x] NFS
+- [x] Download YouTube 144p - 1080p
 - [ ] Otros
 
 En caso de presentar algun error o duda, le invito a comunicármela para su pronta resolución.
@@ -103,7 +104,7 @@ En caso de presentar algun error o duda, le invito a comunicármela para su pron
 
 ## 🎐 Repo Stats 
 
-![github card](https://github-readme-stats.vercel.app/api/pin/?username=DyrKom&repo=XiaoBot-MD&theme=chartreuse-dark)
+![github card](https://github-readme-stats.vercel.app/api/pin/?username=Syllkom&repo=XiaoBot-MD&theme=chartreuse-dark)
 
 ## Créditos 
 <a href="https://github.com/DyrKom"><img src="https://github.com/DyrKom.png" width="100" height="100" alt="DyrKom"/></a>
@@ -111,6 +112,6 @@ En caso de presentar algun error o duda, le invito a comunicármela para su pron
 <div align="center">
   <h1 align="center">Creador y Propietario del Bot</h1>
 
-<a href="https://github.com/DyrKom"><img src="https://tinyurl.com/5n6pff2f" width="300" height="300" alt="お Dyr. Kom"/></a>
+<a href="https://github.com/Syllkom"><img src="https://tinyurl.com/5n6pff2f" width="300" height="300" alt="おSyllkom"/></a>
 
 `© 2024 Anime & Onigiri All rights reserved`
