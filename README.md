@@ -99,7 +99,7 @@
 
 En caso de presentar algun error o duda, le invito a comunicármela para su pronta resolución.
 
-お Dyr. Kom
+おSyllkom
 - [![WhatsApp Group](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/51933479416)
 
 ## 🎐 Repo Stats 
@@ -107,7 +107,7 @@ En caso de presentar algun error o duda, le invito a comunicármela para su pron
 ![github card](https://github-readme-stats.vercel.app/api/pin/?username=Syllkom&repo=XiaoBot-MD&theme=chartreuse-dark)
 
 ## Créditos 
-<a href="https://github.com/DyrKom"><img src="https://github.com/DyrKom.png" width="100" height="100" alt="DyrKom"/></a>
+<a href="https://github.com/Syllkom"><img src="https://github.com/Syllkom.png" width="100" height="100" alt="Syllkom"/></a>
 ---------
 <div align="center">
   <h1 align="center">Creador y Propietario del Bot</h1>
