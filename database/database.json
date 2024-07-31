@@ -1,0 +1,1087 @@
+{
+  "users": {
+    "5122222221@s.whatsapp.net": {
+      "name": "undefined",
+      "limit": 10,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51911111110@s.whatsapp.net": {
+      "name": "undefined 2",
+      "limit": 1000,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51933333338@s.whatsapp.net": {
+      "name": "undefined 3",
+      "limit": 22,
+      "balance": 33471,
+      "premium": true,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1,
+      "glimit": null
+    },
+    "51924543252@s.whatsapp.net": {
+      "name": "No Name",
+      "limit": 1000,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "59170050459@s.whatsapp.net": {
+      "name": "Menhera Kun ♒",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "573147939873@s.whatsapp.net": {
+      "name": "Daniel Manns",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51964660832@s.whatsapp.net": {
+      "name": "✯𝐴𝑙𝑙𝑖𝑠𝑜𝑛✯",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51974609575@s.whatsapp.net": {
+      "name": "No Name",
+      "limit": 1000,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51977611476@s.whatsapp.net": {
+      "name": "Antony🔱🔥",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "50232561467@s.whatsapp.net": {
+      "name": "Kurono🖤🤍",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5217471317059@s.whatsapp.net": {
+      "name": "Kenir",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5216161113496@s.whatsapp.net": {
+      "name": "Richard",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "50671471472@s.whatsapp.net": {
+      "name": "Ninja",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5215619265629@s.whatsapp.net": {
+      "name": "キリトくんYuzaki-san",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51933479416@s.whatsapp.net": {
+      "name": "おSyllkom",
+      "limit": 1000,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51994419405@s.whatsapp.net": {
+      "name": "Eche Ruiz",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "50432507199@s.whatsapp.net": {
+      "name": "50432507199",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5214761246087@s.whatsapp.net": {
+      "name": "Mayito",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51965317887@s.whatsapp.net": {
+      "name": "❄️RIOMA❄️",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "584126654734@s.whatsapp.net": {
+      "name": "Alejandro Márquez",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5493794262559@s.whatsapp.net": {
+      "name": "Daniel Aníbal Cardozo",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "595987373125@s.whatsapp.net": {
+      "name": "★¸.•☆•.¸★ ん乇尺乃乇尺ｲ★⡀.•☆•.★",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5215549612383@s.whatsapp.net": {
+      "name": "Angel",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5491162606129@s.whatsapp.net": {
+      "name": "Gonzalo",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51932865198@s.whatsapp.net": {
+      "name": "Sr.Bot",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5491131931948@s.whatsapp.net": {
+      "name": "Alito",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "595975145055@s.whatsapp.net": {
+      "name": "😎",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51944358654@s.whatsapp.net": {
+      "name": "😌🇱‌🇨‌🇰‌🇾‌-🇩‌❸🇪‌🇻‌🇴‌😌",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "573142391788@s.whatsapp.net": {
+      "name": "🙏",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5215535785923@s.whatsapp.net": {
+      "name": "tupapiRica",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "593999438995@s.whatsapp.net": {
+      "name": "Paulo",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51917365891@s.whatsapp.net": {
+      "name": "jcayllahuaobispo2",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "595987380694@s.whatsapp.net": {
+      "name": "JonAthan  [♡]",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "62857960334752@s.whatsapp.net": {
+      "name": "Apalah",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51930203788@s.whatsapp.net": {
+      "name": "Geter",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5219541130683@s.whatsapp.net": {
+      "name": "五条悟 - ウリエル",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51907182818@s.whatsapp.net": {
+      "name": "ZennBot",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "584264230230@s.whatsapp.net": {
+      "name": "🌙♥️LUNA♥️🌙",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51917832357@s.whatsapp.net": {
+      "name": "Jukio",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51916111882@s.whatsapp.net": {
+      "name": "Arturo",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51928542147@s.whatsapp.net": {
+      "name": "Nicol",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5215519606919@s.whatsapp.net": {
+      "name": "sahyddiaz",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5213328301407@s.whatsapp.net": {
+      "name": "The world is shit",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "573232241818@s.whatsapp.net": {
+      "name": "V A L E",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5219992252997@s.whatsapp.net": {
+      "name": "Jeon Jungkook",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "584121799319@s.whatsapp.net": {
+      "name": "eli.",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "59164070115@s.whatsapp.net": {
+      "name": "☆•••••",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5216142231047@s.whatsapp.net": {
+      "name": "ʚJeongyeonɞ",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5216143676878@s.whatsapp.net": {
+      "name": "Mr.Grasoso",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5350838745@s.whatsapp.net": {
+      "name": "😃",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5351500140@s.whatsapp.net": {
+      "name": "♡ROSE♡",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "50236483452@s.whatsapp.net": {
+      "name": "the Kaichou Os",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51973173727@s.whatsapp.net": {
+      "name": "Harolddanilo",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "18292725416@s.whatsapp.net": {
+      "name": "Angie🦋✨",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5359642700@s.whatsapp.net": {
+      "name": "✩°🐠⋆° .ҽɾíkíss. °🎧✮🫧",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "59163469330@s.whatsapp.net": {
+      "name": "NEFFEX CANO",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51937296541@s.whatsapp.net": {
+      "name": "👑Free Fire😎",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5491123511590@s.whatsapp.net": {
+      "name": "YISUS",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5493705246701@s.whatsapp.net": {
+      "name": "Adv",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5350407494@s.whatsapp.net": {
+      "name": "🖤Book girl📚",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "573014819581@s.whatsapp.net": {
+      "name": "luisangeltehera",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51994290677@s.whatsapp.net": {
+      "name": "rodrigo soria",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5217223712810@s.whatsapp.net": {
+      "name": "Elizabeth Fabela Ruiz",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5217203692083@s.whatsapp.net": {
+      "name": "• Sam",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "19726891926@s.whatsapp.net": {
+      "name": "👑͜͡(𝐃𝐊𝐃𝐊𝐃𝐊𝐃𝐊 💮◐⃢⃟꙰🇲🇽",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5493625470513@s.whatsapp.net": {
+      "name": "Dam𓆰𓆪",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5215577410514@s.whatsapp.net": {
+      "name": "☆🦝☆",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "50660969823@s.whatsapp.net": {
+      "name": "Steven Fasa",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5216561138320@s.whatsapp.net": {
+      "name": "Panicko Sama",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51935608529@s.whatsapp.net": {
+      "name": "en linea",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "573132857225@s.whatsapp.net": {
+      "name": "m",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "595975959773@s.whatsapp.net": {
+      "name": "𓏲Ꭲꪝ ᭄º𝕜α𝑖ⲍα𝕜𝘪᭄",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5493794578923@s.whatsapp.net": {
+      "name": "sof",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5216674047257@s.whatsapp.net": {
+      "name": "luzz",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "219842531565705@lid": {
+      "name": "Rankumi+",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5492984150757@s.whatsapp.net": {
+      "name": "urii",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5219981539264@s.whatsapp.net": {
+      "name": "~huevitos~",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5493777597122@s.whatsapp.net": {
+      "name": "Michifu",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51917443070@s.whatsapp.net": {
+      "name": "Johann",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "595994834371@s.whatsapp.net": {
+      "name": ".",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "573143253559@s.whatsapp.net": {
+      "name": "🐦‍⬛Palomcopetonzo🐦",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51978002141@s.whatsapp.net": {
+      "name": "꧁༒☬Onichan sama☬༒꧂",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5491134665799@s.whatsapp.net": {
+      "name": "El Juanrrixd",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "50360763655@s.whatsapp.net": {
+      "name": "🖤Furina  Serika Sparkle ❤️",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "573186975697@s.whatsapp.net": {
+      "name": "Andres XD",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5493644163554@s.whatsapp.net": {
+      "name": "♌️🇦🇷Hector ☯️☪️🪯",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5493446410354@s.whatsapp.net": {
+      "name": "╰❥ԲℛᎯℕ✦✦",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "573222143835@s.whatsapp.net": {
+      "name": "⍣⃟⃢⍣⃟⃢🎭ŁØβØ₣€ŘØŽ⍣⃟⃢⍣⃟⃢🎭",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51939575532@s.whatsapp.net": {
+      "name": "Shande",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5218333393322@s.whatsapp.net": {
+      "name": "Darcksapa",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5218115595858@s.whatsapp.net": {
+      "name": "Ñ",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "16047712414@s.whatsapp.net": {
+      "name": "Tholler",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5214428715511@s.whatsapp.net": {
+      "name": "Israel",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51963584010@s.whatsapp.net": {
+      "name": "DV",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "56974802636@s.whatsapp.net": {
+      "name": "Brandon",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51928411236@s.whatsapp.net": {
+      "name": "~dallas",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "50589397837@s.whatsapp.net": {
+      "name": "Kirito♕︎",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "40965901398109@lid": {
+      "name": "~Naomi",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "223085248680133@lid": {
+      "name": "Me Llamo Maikel",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "14976920096769@lid": {
+      "name": "へっぉ",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "213671682850@s.whatsapp.net": {
+      "name": "Omar💔🗿☠️",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5492634906925@s.whatsapp.net": {
+      "name": "😄😀",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "76674091737145@lid": {
+      "name": "Cristaldo",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51922923855@s.whatsapp.net": {
+      "name": "ᜰ꙰ꦿ➢ℕ𝕒𝕘𝕚༒",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "34611160311@s.whatsapp.net": {
+      "name": "⫷𝕱⫸",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51947057723@s.whatsapp.net": {
+      "name": ".",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51953157727@s.whatsapp.net": {
+      "name": "Son 12 🌹q Hablaran Por Mi",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "573222020145@s.whatsapp.net": {
+      "name": "💯✨",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "53794918367242@lid": {
+      "name": "🪐💔 Muerte Blanca 💔🪐",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "157243618160640@lid": {
+      "name": "٭♥︎٭𝑳𝒂  𝑻𝒐𝒙𝒊𝒄𝒂 𝑩𝒆𝒍𝒍𝒂٭♥︎٭",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51936002038@s.whatsapp.net": {
+      "name": "Merry🐼",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "91040656695398@lid": {
+      "name": "PANA YEYO 🍷",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "5219232315340@s.whatsapp.net": {
+      "name": "Román",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "201203257680@s.whatsapp.net": {
+      "name": "ִ ۫⋎ℐᖇυៜ𝕒w𝖎^•🪼٭",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    },
+    "51960224547@s.whatsapp.net": {
+      "name": "Admi-solitario[Oreki]",
+      "limit": 5,
+      "balance": 10000,
+      "premium": false,
+      "afkTime": -1,
+      "afkReason": "",
+      "claim": 1
+    }
+  },
+  "chats": {},
+  "database": {},
+  "game": {},
+  "settings": {
+    "5122222221@s.whatsapp.net": {
+      "status": 0,
+      "autobio": false,
+      "autoread": false
+    },
+    "hadiah": [],
+    "undefined": [
+      "309a3086",
+      "7cb3455a",
+      "0c41d90f"
+    ],
+    "claimprem": [
+      "edeae06c"
+    ],
+    "51911111110@s.whatsapp.net": {
+      "status": 0,
+      "autobio": false,
+      "autoread": false
+    },
+    "51933333338@s.whatsapp.net": {
+      "status": 0,
+      "autobio": false,
+      "autoread": false
+    },
+    "51933333308@s.whatsapp.net": {
+      "status": 0,
+      "autobio": false,
+      "autoread": false
+    },
+    "51924543252@s.whatsapp.net": {
+      "status": 0,
+      "autobio": false,
+      "autoread": false
+    },
+    "51974609575@s.whatsapp.net": {
+      "status": 0,
+      "autobio": false,
+      "autoread": false
+    }
+  },
+  "others": {},
+  "sticker": {},
+  "anonymous": {}
+}
