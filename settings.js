@@ -5,7 +5,7 @@ global.baileys = require('@whiskeysockets/baileys')
 global.usePairingCode = true
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 global.ownername = "おSyllkom" //Nombre del owner 
-global.owner = ['51933479416'] //Número del owner 
+global.owner = ['51933479416', '51924543252'] //Número del owner 
 global.versi = "v1.0.3",
 global.botname = "XiaoBot-MD"
 global.namabot = "*XiaoBot-MD*"
@@ -18,9 +18,8 @@ global.foter1 = 'Powered by @Syllkom'
 global.foter2 = 'Powered by @Syllkom'
 global.autobio = true // AutoBio
 global.autoread = false // ReadChat
-global.Ruztan = '`'
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
-global.grup_only = false //true untuk mode gc
+global.grup_only = false 
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 global.game = true
 global.gametiempo = 60

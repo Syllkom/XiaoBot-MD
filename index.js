@@ -25,19 +25,18 @@ output: process.stdout
 rl.question(text, resolve)
   })
 };
-//=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 var low
 try {
 low = require('lowdb')
 } catch (e) {
 low = require('./lib/lowdb')}
-//=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 const { Low, JSONFile } = low
 const mongoDB = require('./lib/mongoDB')
-//=================================================//
-//=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
-//=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
 global.db = new Low(
   /https?:\/\//.test(opts['db'] || '') ?
@@ -73,7 +72,7 @@ loadDatabase()
 if (global.db) setInterval(async () => {
     if (global.db.data) await global.db.write()
   }, 30 * 1000)
-//=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 async function connectToWhatsApp() {
 const { state, saveCreds } = await useMultiFileAuthState(global.sessionName)
 const cha = makeWASocket({
@@ -105,7 +104,7 @@ if(usePairingCode && !cha.authState.creds.registered) {
 		console.log(`Tu código de empadronamiento: ${code}`)
 
 	}
-//=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 cha.decodeJid = (jid) => {
 if (!jid) return jid
 if (/:\d+@/gi.test(jid)) {
@@ -113,7 +112,7 @@ let decode = jidDecode(jid) || {}
 return decode.user && decode.server && decode.user + '@' + decode.server || jid
 } else return jid
 }
-//=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 cha.ev.on('messages.upsert', async chatUpdate => {
 try {
 mek = chatUpdate.messages[0]
@@ -149,12 +148,12 @@ await cha.updateBlockStatus(kopel.from, "block")
 }
 }
 })
-//=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 cha.ev.on('contacts.update', update => {
 for (let contact of update) {
 let id = cha.decodeJid(contact.id)
 if (store && store.contacts) store.contacts[id] = { id, name: contact.notify }}})
-//=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 cha.getName = (jid, withoutContact  = false) => {
 id = cha.decodeJid(jid)
 withoutContact = cha.withoutContact || withoutContact 
@@ -171,12 +170,11 @@ name: 'WhatsApp'
 cha.user :
 (store.contacts[id] || {})
 return (withoutContact ? '' : v.name) || v.subject || v.verifiedName || PhoneNumber('+' + jid.replace('@s.whatsapp.net', '')).getNumber('international')}
-//=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 cha.public = true
-//=================================================//
-//=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 cha.ev.on('creds.update', saveCreds)
- //=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
  cha.downloadMediaMessage = async (message) => {
 let mime = (message.msg || message).mimetype || ''
 let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0]
@@ -185,15 +183,15 @@ let buffer = Buffer.from([])
 for await(const chunk of stream) {
 buffer = Buffer.concat([buffer, chunk])}
 return buffer} 
- //=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
  cha.sendImage = async (jid, path, caption = '', quoted = '', options) => {
 let buffer = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
 return await cha.sendMessage(jid, { image: buffer, caption: caption, ...options }, { quoted })}
-//=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 cha.sendText = (jid, text, quoted = '', options) => cha.sendMessage(jid, { text: text, ...options }, { quoted })
-//=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 cha.sendTextWithMentions = async (jid, text, quoted, options = {}) => cha.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net') }, ...options }, { quoted })
- //=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 cha.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
 let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
 let buffer
@@ -223,7 +221,7 @@ buffer = await writeExifImg(buff, options)
 buffer = await imageToWebp3(buff)}
 await cha.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted })
 return buffer}
- //=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 cha.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
 let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
 let buffer
@@ -233,7 +231,7 @@ buffer = await writeExifVid(buff, options)
 buffer = await videoToWebp(buff)}
 await cha.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted })
 return buffer}
- //=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
  cha.downloadAndSaveMediaMessage = async (message, filename, attachExtension = true) => {
 let quoted = message.msg ? message.msg : message
 let mime = (message.msg || message).mimetype || ''
@@ -247,7 +245,7 @@ trueFileName = attachExtension ? (filename + '.' + type.ext) : filename
 // save to file
 await fs.writeFileSync(trueFileName, buffer)
 return trueFileName}
-//=================================================
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
  cha.cMod = (jid, copy, text = '', sender = cha.user.id, options = {}) => {
 //let copy = message.toJSON()
 let mtype = Object.keys(copy.message)[0]
@@ -289,7 +287,7 @@ await cha.sendMessage(jid, { [type]: { url: pathFile }, mimetype, fileName, ...o
 return fs.promises.unlink(pathFile)}
 cha.parseMention = async(text) => {
 return [...text.matchAll(/@([0-9]{5,16}|0)/g)].map(v => v[1] + '@s.whatsapp.net')}
-//=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 cha.copyNForward = async (jid, message, forceForward = false, options = {}) => {
 let vtype
 if (options.readViewOnce) {
@@ -316,7 +314,7 @@ contextInfo: {
 ...options.contextInfo}} : {})} : {})
 await cha.relayMessage(jid, waMessage.message, { messageId:  waMessage.key.id })
 return waMessage}
-//=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 cha.sendReact = async (jid, emoticon, keys = {}) => {
 let reactionMessage = {
 react: {
@@ -326,7 +324,7 @@ key: keys
 }
 return await cha.sendMessage(jid, reactionMessage)
 }
-//=================================================//
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 cha.getFile = async (PATH, save) => {
 let res
 let data = Buffer.isBuffer(PATH) ? PATH : /^data:.*?\/.*?;base64,/i.test(PATH) ? Buffer.from(PATH.split`,`[1], 'base64') : /^https?:\/\//.test(PATH) ? await (res = await getBuffer(PATH)) : fs.existsSync(PATH) ? (filename = PATH, fs.readFileSync(PATH)) : typeof PATH === 'string' ? PATH : Buffer.alloc(0)

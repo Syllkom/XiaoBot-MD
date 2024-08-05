@@ -85,7 +85,6 @@ module.exports = conn = async (conn, m, chatUpdate, store) => {
  try {
 var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype == 'interactiveResponseMessage') ? appenTextMessage(JSON.parse(m.msg.nativeFlowResponseMessage.paramsJson).id, chatUpdate) : (m.mtype == 'templateButtonReplyMessage') ? appenTextMessage(m.msg.selectedId, chatUpdate) : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
 
-//WM By Rulzz, Titenono lek ko hapus le😹
  async function appenTextMessage(text, chatUpdate) {
 let messages = await generateWAMessage(m.chat, { text: text, mentions: m.mentionedJid }, {
 userJid: conn.user.id,
@@ -496,7 +495,7 @@ if (!isNumber(setting.status)) setting.status = 0
 if (autobio) {
 let _uptime = process.uptime() * 1000
 let uptime = clockString(_uptime)
-await conn.updateProfileStatus(`Mi nombre es ${botname} • Activo durante ${uptime} • Modo: ${conn.public ? 'Publico' : 'Propio'}`).catch(_ => _)
+await conn.updateProfileStatus(`${botname} • Activo durante ${uptime} • Modo: ${conn.public ? 'Publico' : 'Propio'}`).catch(_ => _)
 }
 if (autoread) {
 conn.readMessages([m.key])
@@ -1253,6 +1252,68 @@ case 'shinobu': {
                                 {
                                     name: "quick_reply",
                                     buttonParamsJson: `{\"display_text\":\"Siguiente\",\"id\":\"shinobu\"}`
+                                }
+                            ]
+                        })
+                    })
+                }
+            }
+        }, { userJid: m.sender, quoted: kom });
+
+        await conn.relayMessage(msg.key.remoteJid, msg.message, {
+            messageId: msg.key.id
+        });
+    } catch (error) {
+        console.error(error);
+        await conn.sendMessage(m.chat, { react: { text: `❌`, key: m.key }});
+        reply('Ocurrió un error al obtener los datos.');
+    }
+} break
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
+case 'waifu': {
+    await conn.sendMessage(m.chat, { react: { text: `🕓`, key: m.key }});
+
+    try {
+        let response = await axios.get(`https://waifu.pics/api/sfw/waifu`);
+        await conn.sendMessage(m.chat, { react: { text: `✅`, key: m.key }});
+
+        const imageMessage = await prepareWAMessageMedia({ image: { url: response.data.url } }, { upload: conn.waUploadToServer });
+
+        let msg = generateWAMessageFromContent(m.chat, {
+            viewOnceMessage: {
+                message: {
+                    "messageContextInfo": {
+                        "deviceListMetadata": {},
+                        "deviceListMetadataVersion": 2
+                    },
+                    interactiveMessage: proto.Message.InteractiveMessage.create({
+                        contextInfo: {
+                            mentionedJid: [m.sender],
+                            externalAdReply: {
+                                showAdAttribution: true,
+                                title: "XiaoBot-MD",
+                                body: `User: ${pushname}`,
+                                mediaUrl: syllkom,
+                                thumbnail: fs.readFileSync('./imagenes/icon.png'),
+                                mediaType: 1
+                            }
+                        },
+                        body: proto.Message.InteractiveMessage.Body.create({
+                            text: `El bot mas shidori tercermundista`
+                        }),
+                        footer: proto.Message.InteractiveMessage.Footer.create({
+                            text: `Powered By @Syllkom`
+                        }),
+                        header: proto.Message.InteractiveMessage.Header.create({
+                            title: '',
+                            hasMediaAttachment: true,
+                            imageMessage: imageMessage.imageMessage
+                        }),
+                        nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+                            buttons: [
+                                {
+                                    name: "quick_reply",
+                                    buttonParamsJson: `{\"display_text\":\"Siguiente\",\"id\":\"waifu\"}`
                                 }
                             ]
                         })
@@ -2779,39 +2840,28 @@ case 'ytmp4': case 'ytvideo': case 'ytplayvideo': case 'ytv': {
     await conn.sendMessage(m.chat, { react: { text: `📥`, key: m.key } });
     await conn.relayMessage(msg.key.remoteJid, msg.message, { messageId: msg.key.id });
 } break;
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
+case 'ytquality': {
+    if (!text.includes(' ')) return reply(`Ejemplo: ${prefix + command} https://youtu.be/7QaFGiCAM0E?si=SXWKTvhFd8qhkrcP 720p`);
 
-
-case 'ytquality': case 'ytdlhd': {
     const [url, quality] = text.split(' ');
-    if (!url || !quality) return reply(`Uso: ${prefix + command} <url> <calidad>`);
     if (!url.includes('youtu')) return reply('¡El enlace no pertenece a YouTube!');
+    if (!['144p', '240p', '360p', '480p', '720p', '1080p'].includes(quality)) return reply('¡Calidad no válida!');
 
-    await conn.sendMessage(m.chat, { react: { text: '🕓', key: m.key } });
-
+    await conn.sendMessage(m.chat, { react: { text: `⏳`, key: m.key } });
     try {
         const resultados = await ytMp4(url, quality);
         await conn.sendMessage(m.chat, {
             video: { url: resultados.result },
-            caption: ``,
-            contextInfo: {
-                externalAdReply: {
-                    title: 'XiaoBot-MD • YouTube',
-                    body: 'Powered by @Syllkom',
-                    thumbnail: fs.readFileSync('./imagenes/icon.png'),
-                    mediaType: 1,
-                    renderLargerThumbnail: false,
-                    mediaUrl: syllkom,
-                    sourceUrl: syllkom
-                }
-            }
+            caption: `*Calidad de video:* ${quality}`
         }, { quoted: kom });
-        await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
-    } catch (e) {
-        console.log(e);
-        await reply('Error al obtener el video.');
+        await conn.sendMessage(m.chat, { react: { text: `✅`, key: m.key } });
+    } catch (error) {
+        console.error(error);
+        await conn.sendMessage(m.chat, { react: { text: `❌`, key: m.key } });
+        reply('Hubo un error al procesar tu solicitud.');
     }
 } break;
-
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 case 'ttmp3': case 'tiktokmp3': case 'ttaudio': case 'tiktokaudio': {
 if (!text) return reply(`Ejemplo: ${prefix + command} https://vm.tiktok.com/ZMr9usGv1/`)
