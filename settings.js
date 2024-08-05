@@ -5,7 +5,7 @@ global.baileys = require('@whiskeysockets/baileys')
 global.usePairingCode = true
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 global.ownername = "おSyllkom" //Nombre del owner 
-global.owner = ['51933479416', '51924543252'] //Número del owner 
+global.owner = ['51933479416'] //Número del owner 
 global.versi = "v1.0.3",
 global.botname = "XiaoBot-MD"
 global.namabot = "*XiaoBot-MD*"
