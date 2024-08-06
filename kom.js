@@ -2451,7 +2451,7 @@ reply(teks)
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 case 'bcgp': case 'bcgrupo': {
 if (!isCreator) return reply(mess.owner)
-if (!text) return reply(`Y el texto?\n\nEjemplo: ${prefix + command} fatih-san`)
+if (!text) return reply(`Y el texto?\n\nEjemplo: ${prefix + command} hola`)
 let getGroups = await conn.groupFetchAllParticipating()
 let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
 let anu = groups.map(v => v.id)
