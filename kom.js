@@ -3,8 +3,6 @@ require('./settings')
 const { WA_DEFAULT_EPHEMERAL, getAggregateVotesInPollMessage, generateWAMessageContent, generateWAMessage, downloadContentFromMessage, areJidsSameUser, getContentType } = global.baileys
 const { generateWAMessageFromContent, proto, prepareWAMessageMedia } = require("@whiskeysockets/baileys")
 const fs = require('fs')
-const { Primbon } = require('scrape-primbon')
-const primbon = new Primbon()
 const cron = require('node-cron')
 const util = require('util')
 const chalk = require('chalk')
@@ -17,7 +15,6 @@ const FormData = require('form-data')
 const gtts = require('node-gtts')
 const cheerio = require('cheerio');
 const { promisify } = require("util")
-const { pipeline } = require('stream')
 const ms = require("ms");
 const crypto = require('crypto')
 const https = require('https')
@@ -25,23 +22,14 @@ const uploadImage = require('./lib/uploadImage')
 const { URL_REGEX } = require('@whiskeysockets/baileys')
 const { fileTypeFromBuffer } = require('file-type')
 const PhoneNumber = require('awesome-phonenumber')
-const bingi = require('bing-scraper')
-const nou = require("node-os-utils");
 const path = require('path')
 const jimp = require('jimp')
-const zsExtract = require('zs-extract')
-const acrcloud = require('acrcloud')
-const { ocrSpace } = require('ocr-space-api-wrapper')
 const content = JSON.stringify(m.message)
 const isQuotedViewonce = m.quoted ? content.includes('viewOnceMessage') ? true : false : true
 const { youtubedl, youtubedl2 } = require('@bochilteam/scraper-sosmed')
 const moment = require('moment-timezone')
-const { JSDOM } = require('jsdom')
-const maker = require('mumaker')
 const yts = require('yt-search');
 const ytdl = require('ytdl-core');
-const jsobfus = require('javascript-obfuscator')
-const { Configuration, OpenAIApi } = require('openai')
 const { exec, spawn, execSync } = require("child_process")
 const { addExif } = require('./lib/exif')
 const { toAudio, toPTT, toVideo, ffmpeg, addExifAvatar } = require('./lib/converter')
@@ -59,17 +47,18 @@ global.MENUpngSendMessage = getMENUpngLinks
 const { getMikuNakanoIconLinks } = require('./imagenes/iconos/mikunakanoicon.js');
 global.MikuNakanoIconSendMessage = getMikuNakanoIconLinks;
 
+//edit nostálgico & sad?
 const { getEditAnimeLinks } = require('./imagenes/edits/editanime.js');
 global.EditAnimeSendMessage = getEditAnimeLinks
-//limit
-const { getLimit, isLimit, limitAdd, giveLimit, addBalance, kurangBalance, getBalance, isGame, gameAdd, givegame, cekGLimit } = require("./lib/limit");
-const { limitCount } = require("./data/limit.json");
+
+//edit phonk anime 
+const { getEditAnimePhonkLinks } = require('./imagenes/editphonk/editphonk.js');
+global.EditAnimePhonkSendMessage = getEditAnimePhonkLinks
 
 const { TelegraPH } = require("./lib/TelegraPH")
 const ntilink = JSON.parse(fs.readFileSync("./lib/antilink.json"))
 const antilink2 = JSON.parse(fs.readFileSync('./lib/antilink2.json'))
-const { ssweb, tiktok, remini } = require("./lib/scraper")
-const { color, bgcolor } = require('./lib/color')
+const { ssweb, tiktok, remini, styletext } = require("./lib/scraper")
 const { 
 getRegisteredRandomId, 
 addRegisteredUser, 
@@ -157,18 +146,6 @@ const time = moment(Date.now()).tz('America/Lima').locale('id').format('HH:mm:ss
 const tanggal2 = moment.tz('America/Lima').format('DD/MM/YY')
 const wita = moment.tz('America/Lima').format('HH : mm : ss')
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
-setInterval(function() { 
-    var jamna = new Date().toLocaleTimeString('en-US', { timeZone: 'America/Lima' });
-    var resultadosprueba = jamna.split(':')[0] < 10 ? '0' + jamna : jamna;
-    if (resultadosprueba === '12:00:00 AM') {
-        limit = [];
-        fs.writeFileSync('./database/limit.json', JSON.stringify(limit));
-        glimit = [];
-        fs.writeFileSync('./database/glimit.json', JSON.stringify(glimit));
-        console.log("El límite ha sido restablecido.!");
-    }
-}, 1000);
-
 const time2 = moment().tz('America/Lima').format('HH:mm:ss');
 if (time2 < "23:59:00") {
     var timeLATAM = `Buenas noches ${pushname} 🌙`;
@@ -210,9 +187,6 @@ El bot se encuentra en modo "Solo grupo", no Puedes utilizarlo en privado.`,
     }
    })
    }   
-   
-let limit = JSON.parse(fs.readFileSync('./database/limit.json'));
-let glimit = JSON.parse(fs.readFileSync('./database/glimit.json'));
 // FUNCTION MONO SPACE FONT
 function monospace(string) {
 return '```' + string + '```'
@@ -462,25 +436,17 @@ ppuser = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-9
 ppnyauser = await getBuffer(ppuser)
 try {
 let isNumber = x => typeof x === 'number' && !isNaN(x)
-let limitUser = isCreator ? 1000 : limitawal
-let balanceUser = isCreator ? 10000 : balanceawal
 let user = global.db.data.users[m.sender]
 if (typeof user !== 'object') global.db.data.users[m.sender] = {}
 if (user) {
-if (!isNumber(user.balance)) user.balance = balanceUser
-if (!isNumber(user.limit)) user.limit = limitUser
-if (!('premium' in user)) user.premium = false
 if (!isNumber(user.afkTime)) user.afkTime = -1
 if (!('afkReason' in user)) user.afkReason = ''
-if (!('claim' in user)) user.premium = 1
 } else global.db.data.users[m.sender] = {
 name: pushname,
-limit: limitUser,
 balance: balanceUser,
 premium: false,
 afkTime: -1,
 afkReason: '',
-limit: limitUser,
 claim: 1,
 }
 } catch (err) {
@@ -521,47 +487,6 @@ welcome: true,
 clearTime: 0
 } 
 //================== [ ALL - FUNCIÓN ] ==================//
-let Slimit = db.data.users[m?.sender].limit
-let Sbalance = db.data.users[m?.sender].balance
-const isPremium = db.data.users[m?.sender].premium == true ? true : m?.sender == owner ? true : false
-
-async function uselimit() {
-if (isCreator) return
-db.data.users[m?.sender].limit -= 1
-}
-
-Array.prototype.rendem = function rendem() {
-return this[Math.floor(Math.random() * this.length)];
-}
-
-function capital(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-function formatter(value) {
-return value.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-}
-
-function calculatePPN(value) {
-return value * 0.1;
-}
-
-function removeItem(array, item) {
-return array.filter(elem => !(elem.jid === item.jid && elem.state === item.state));
-}
-
-cron.schedule('00 00 * * *', () => {
-let user = Object.keys(global.db.data.users)
-for (let jid of user) {
-global.db.data.users[jid].claim = 1
-if (global.db.data.users[jid].balance < 10000 && global.db.data.users[jid].limit < 1) {
-global.db.data.users[jid].limit = limitawal
-global.db.data.users[jid].balance = balanceawal
-}}}, {
-scheduled: true,
-timezone: "America/Lima"
-})
-
 const totalCMD = () =>{
             var mytext = fs.readFileSync("./kom.js").toString()
             var numUpper = (mytext.match(/case '/g) || []).length;
@@ -646,7 +571,144 @@ case 'allmenu': case 'menu': case 'comandos': case 'menucompleto': case 'help': 
                         }
                     },
                     body: proto.Message.InteractiveMessage.Body.create({
-                        text: `╭◯ *I N F O - B O T*\n╷ *Bot multiprefijo*\n╷ *Usuario:* @${m.sender.split('@')[0]}\n╷ *Activo:* ${runtime(process.uptime())}\n╷ *Usuarios:* ${Object.keys(db.data.users).length}\n╷ *Versión:* 1.0.3\n╷ *Creador:* @Syllkom\n╰◯\n\n*• ¿𝗦𝗮𝗯𝗶𝗮𝘀 𝗾𝘂𝗲́?* ${sabiasq}\n${readmore}\n╭◯ *J U E G O S*\n╷ registrar\n╷ vaquero\n╷ carreraanimales\n╷ adivina-bandera\n╷ slot1 *(fácil)*\n╷ slot2 *(difícil)*\n╷ minecraft (apk)\n╰◯\n\n╭◯ *S E R V I C I O*\n╷ tiktok\n╷ remini\n╷ gitclone\n╷ pinterest\n╷ facebook\n╷ mediafire\n╷ instagram\n╷ spotify\n╷ copilot *<texto>*\n╷ wikipedia\n╷ play\n╷ yts\n╷ ytmp4\n╷ ytmp3 \n╰◯\n\n╭◯ *C O N V E R S O R*\n╷ sticker\n╷ stickergif\n╷ ssweb\n╷ emojimix *<😌+🤤>*\n╷ tinyurl\n╷ toanime *<quoted/img>*\n╷ remini *<quoted/img>*\n╷ tourl\n├◯ *A U D I O*\n╷ bajo\n╷ estropeado\n╷ profundo\n╷ earrape\n╷ rápido\n╷ gordo\n╷ nightcore\n╷ reverse\n╷ robot\n╷ slow\n╷ smooth\n╷ ardilla\n╰◯\n\n╭◯ *A N I M E*\n╷ danbooru\n╷ yandere\n╷ loli\n╷ logoneko *<texto>*\n╷ husbando\n╷ kitsune\n╷ megumin\n╷ neko\n╷ shinobu\n╷ waifu\n╷ pareja\n╷ editanime\n╷ mikunakanoicon\n╷ wallpaper (name)\n╰◯\n\n╭◯ *R A N D O M*\n╷ afk\n╷ listcase\n╷ owner\n╷ ping\n╷ top\n╷ script\n╷ café\n╷ sonidorandom\n╷ infobot\n╰◯\n\n╭◯ *G R U P O*\n╷ antilink *<on/off>*\n╷ antilink2 *<on/off>*\n╷ add *<número/link>*   \n╷ deltt\n╷ setdesc\n╷ setnamegp\n╷ kick \n╷ hidetag\n╷ invocar\n╷ linkgrupo\n╷ resetlinkgp\n╷ sendlinkgp\n╷ promote *<quoted/@user>*\n╷ demote *<quoted/@adm>*\n╷ grupo *<abrir/cerrar>*\n╷ inspect *<enlace gp>*\n╷ tagme\n╰◯\n\n╭◯ *N S F W + 1 8*\n╷ hneko\n╷ hwaifu\n╷ xvid\n╷ hentaisearch *<texto>*\n╰◯\n\n╭◯ *O W N E R*\n╷ setppgruop \n╷ setppbot\n╷ delppbot\n╷ addcase\n╷ delcase\n╷ restart\n╷ getcase\n╷ bcgp\n╷ listregis\n╷ public\n╷ self\n╷ join\n├◯ *A V A N Z A D O*\n╷ =>\n╷ >\n╷ $\n╰◯`
+                        text: `╭◯ *𝗜 𝗡 𝗙 𝗢 - 𝗕 𝗢 𝗧*
+╷ *Bot multiprefijo*
+╷ *Usuario:* @${m.sender.split('@')[0]}
+╷ *Activo:* ${runtime(process.uptime())}
+╷ *Usuarios:* ${Object.keys(db.data.users).length}
+╷ *Versión:* 1.0.3
+╷ *Creador:* @Syllkom
+╰◯
+
+*• ¿𝗦𝗮𝗯𝗶𝗮𝘀 𝗾𝘂𝗲‌?* ${sabiasq}
+${readmore}
+
+╭◯ *𝗚 𝗔 𝗠 𝗘 𝗦*
+╷ registrar
+╷ vaquero
+╷ carreraanimales
+╷ adivina-bandera
+╷ slot1 *(fácil)*
+╷ slot2 *(difícil)*
+╷ minecraft (apk)
+╰◯
+
+╭◯ *𝗗 𝗢 𝗪 𝗟 𝗢 𝗔 𝗗*
+╷ tiktok
+╷ remini
+╷ gitclone
+╷ facebook
+╷ mediafire
+╷ instagram
+╷ ytmp4
+╷ ytmp3
+╷ copilot *<texto>*
+╰◯
+
+╭◯ *𝗦 𝗘 𝗔 𝗥 𝗖 𝗛*
+╷ yts
+╷ spotify
+╷ tiktoksearch
+╷ wikipedia
+╷ pinterest
+╰◯
+
+╭◯ *𝗖 𝗢 𝗡 𝗩 𝗘 𝗥 𝗧 𝗘 𝗥*
+╷ sticker
+╷ ssweb
+╷ emojimix *<😌+🤤>*
+╷ tinyurl
+╷ convertir anime
+╷ remini *<quoted/img>*
+╷ tourl
+╷ style (name)
+╰◯
+
+╭◯ *𝗔 𝗨 𝗗 𝗜 𝗢*
+╷ bajo
+╷ estropeado
+╷ profundo
+╷ earrape
+╷ rápido
+╷ gordo
+╷ nightcore
+╷ reverse
+╷ robot
+╷ slow
+╷ smooth
+╷ ardilla
+╰◯
+
+╭◯ *𝗔 𝗡 𝗜 𝗠 𝗘*
+╷ edit anime
+╷ edit phonk
+╷ danbooru
+╷ yandere
+╷ loli
+╷ logo neko *<texto>*
+╷ husbando
+╷ kitsune
+╷ megumin
+╷ neko
+╷ shinobu
+╷ waifu
+╷ pareja (perfil)
+╷ nakano miku icon 
+╷ avatar anime (logo)
+╷ wallpaper (name)
+╰◯
+
+╭◯ *𝗥 𝗔 𝗡 𝗗 𝗢 𝗠*
+╷ afk
+╷ listcase
+╷ owner
+╷ ping
+╷ top
+╷ script
+╷ café
+╷ rsound
+╷ infobot
+╰◯
+
+╭◯ *𝗚 𝗥 𝗨 𝗣 𝗢*
+╷ antilink *<on/off>*
+╷ antilink2 *<on/off>*
+╷ add *<número/link>*
+╷ deltt
+╷ kick
+╷ hidetag
+╷ invocar
+╷ enlace del grupo 
+╷ restablecer enlace
+╷ enviar enlace
+╷ promote *<quoted/@user>*
+╷ demote *<quoted/@adm>*
+╷ grupo *<abrir/cerrar>*
+╷ inspect *<enlace gp>*
+╷ tagme
+╰◯
+
+╭◯ *𝗡 𝗦 𝗙 𝗪  +  𝟭 𝟴*
+╷ hneko
+╷ hwaifu
+╷ xvid
+╷ hentaisearch *<texto>*
+╰◯
+
+╭◯ *𝗢 𝗪 𝗡 𝗘 𝗥*
+╷ setppgruop
+╷ setppbot
+╷ delppbot
+╷ añadir case 
+╷ restart
+╷ get case
+╷ del case
+╷ bcgp
+╷ listregis
+╷ public
+╷ self
+╷ join
+╰◯`
                     }),
                     footer: proto.Message.InteractiveMessage.Footer.create({
                         text: `Powered By @Syllkom`
@@ -676,202 +738,19 @@ case 'allmenu': case 'menu': case 'comandos': case 'menucompleto': case 'help': 
 }
 break;
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
-/*case 'menucompleto': case 'allmenu': {
-conn.sendMessage(m.chat, { react: { text: `📚`, key: m.key }});
-let profile
-try {
-	profile = await conn.profilePictureUrl(m.sender, 'image');
-} catch (e) {
-	profile = global.fake.anonim
-}
-const setv = pickRandom(global.listv)
-global.sabiasq = global.getRandomMessage()
-const text = `╭◯ *I N F O - B O T*
-╷ *Bot multiprefijo*
-╷ *Usuario:* @${m.sender.split('@')[0]}
-╷ *Activo:* ${runtime(process.uptime())}
-╷ *Usuarios:* ${Object.keys(db.data.users).length}
-╷ *Versión:* 1.0.3
-╷ *Creador:* @Syllkom
-╰◯
-
-*• ¿𝗦𝗮𝗯𝗶𝗮𝘀 𝗾𝘂𝗲́?* ${sabiasq}
-${readmore}
-╭◯ *M E N U S*
-╷ allmenu 
-╷ menu
-╷ gpmenu
-╷ gmenu
-╷ dlmenu
-╷ animenu
-╷ rdmenu
-╷ nsfwmenu
-╷ csmenu
-╷ ownermenu
-╰◯
-
-╭◯ *J U E G O S*
-╷ registrar
-╷ vaquero
-╷ carreraanimales
-╷ adivina-bandera
-╷ slot1 *(fácil)*
-╷ slot2 *(difícil)*
-╷ minecraft (apk)
-╰◯
-
-╭◯ *S E R V I C I O*
-╷ tiktok
-╷ remini
-╷ gitclone
-╷ pinterest
-╷ facebook
-╷ mediafire
-╷ instagram
-╷ spotify
-╷ copilot *<texto>*
-╷ wikipedia
-╷ play
-╷ yts
-╷ ytmp4
-╷ ytmp3 
-╰◯
-
-╭◯ *C O N V E R S O R*
-╷ sticker
-╷ stickergif
-╷ ssweb
-╷ emojimix *<😌+🤤>*
-╷ tinyurl
-╷ toanime *<quoted/img>*
-╷ remini *<quoted/img>*
-╷ tourl
-├◯ *A U D I O*
-╷ bajo
-╷ estropeado
-╷ profundo
-╷ earrape
-╷ rápido
-╷ gordo
-╷ nightcore
-╷ reverse
-╷ robot
-╷ slow
-╷ smooth
-╷ ardilla
-╰◯
-
-╭◯ *A N I M E*
-╷ danbooru
-╷ yandere
-╷ loli
-╷ logoneko *<texto>*
-╷ husbando
-╷ kitsune
-╷ megumin
-╷ neko
-╷ shinobu
-╷ waifu
-╷ pareja
-╷ editanime
-╷ mikunakanoicon
-╷ wallpaper (name)
-╰◯
-
-╭◯ *R A N D O M*
-╷ afk
-╷ listcase
-╷ owner
-╷ ping
-╷ top
-╷ script
-╷ café
-╷ sonidorandom
-╷ infobot
-╰◯
-
-╭◯ *G R U P O*
-╷ antilink *<on/off>*
-╷ antilink2 *<on/off>*
-╷ add *<número/link>*   
-╷ deltt
-╷ setdesc
-╷ setnamegp
-╷ kick 
-╷ hidetag
-╷ invocar
-╷ linkgrupo
-╷ resetlinkgp
-╷ sendlinkgp
-╷ promote *<quoted/@user>*
-╷ demote *<quoted/@adm>*
-╷ grupo *<abrir/cerrar>*
-╷ inspect *<enlace gp>*
-╷ tagme
-╰◯
-
-╭◯ *N S F W + 1 8*
-╷ hneko
-╷ hwaifu
-╷ xvid
-╷ hentaisearch *<texto>*
-╰◯
-
-╭◯ *O W N E R*
-╷ setppgruop 
-╷ setppbot
-╷ delppbot
-╷ addcase
-╷ delcase
-╷ restart
-╷ getcase
-╷ bcgp
-╷ listregis
-╷ public
-╷ self
-╷ join
-├◯ *A V A N Z A D O*
-╷ =>
-╷ >
-╷ $
+case 'mediafire': {
+	if (args.length == 0) return reply(`Donde esta el enlace?`)
+	if (!isUrl(args[0]) && !args[0].includes('mediafire.com')) return reply(`El enlace que proporcionaste no es válido.`)
+	const { mediafireDl } = require('./lib/mediafire.js')
+	const baby1 = await mediafireDl(text)
+	if (baby1[0].size.split('MB')[0] >= 10000) return reply('Vaya, el archivo es demasiado grande...')
+	const result = `╭◯ *𝗠 𝗘 𝗗 𝗜 𝗔 𝗙 𝗜 𝗥 𝗘*
+╵ *Nombre:* ${baby1[0].nama}
+╵ *Tamaño:*${baby1[0].size}
+╵ *Type:* ${baby1[0].mime}
 ╰◯`
-await conn.sendMessage(m.chat, {
-	document: global.fake.docs,
-	fileName: `Menu Completo`,
-	mimetype: pickRandom(global.fake.listfakedocs),
-	fileLength: '100000000000000',
-	pageCount: '774',
-	caption: text,
-	contextInfo: {
-		mentionedJid: [m.sender, '0@s.whatsapp.net', global.owner[0] + '@s.whatsapp.net'],
-		forwardingScore: 999,
-		isForwarded: true,
-		forwardedNewsletterMessageInfo: {
-			newsletterJid: `12031853846998@newsletter`,
-			serverMessageId: null,
-			newsletterName: '🎐 XiaoBot-MD - All Menu'
-		},
-		externalAdReply: {
-			showAdAttribution: true,
-            title: timeLATAM,
-            body: "Powered by @Syllkom",
-			thumbnail: fs.readFileSync('./imagenes/fake.png'),
-			mediaType: 1,
-			previewType: 0,
-			renderLargerThumbnail: true,
-			mediaUrl: syllkom,
-			sourceUrl: syllkom,
-		}
-	}
-}, { quoted: kom })
-}break*/
-//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
-case "mediafire":{
-if (!q) return reply(`y el link?`)
-if (!isUrl(args[0]) && !args[0].includes('mediafire.com')) return reply('link inválido!')
-reply(`Descargando archivo, si el archivo pesa mas de lo esperado no se enviará. . .`)
-let medfr = await mediafireDl(q)
-conn.sendMessage(from, { document : { url : medfr[0].link}, fileName : medfr[0].nama, mimetype: medfr[0].mime }, { quoted : kom }).catch ((err) => reply('_*No se pudo enviar el archivo*_'))
+reply(`${result}`)
+conn.sendMessage(m.chat, { document : { url : baby1[0].link}, fileName : baby1[0].nama, mimetype: baby1[0].mime }, { quoted : m })
 }
 break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
@@ -964,125 +843,6 @@ const message7 = {
     await conn.relayMessage(m.chat, { viewOnceMessage: { message: message7 } }, {})
     break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
-case 'sc':
-case 'script': {
-    function generateReferenceId(length = 11) {
-        return crypto.randomBytes(length).toString('hex').toUpperCase().slice(0, length);
-    }
-
-    let caption = `¿Interesado? contacta a @Syllkom\n\n🪀 Wa.me/51933479416`;
-    const referenceId = generateReferenceId();
-
-    let ngentod = await generateWAMessageFromContent(
-        m.chat,
-        {
-            viewOnceMessage: {
-                message: {
-                    messageContextInfo: {
-                        deviceListMetadata: {},
-                        deviceListMetadataVersion: 2,
-                    },
-                    interactiveMessage: proto.Message.InteractiveMessage.create({
-                        body: proto.Message.InteractiveMessage.Body.create({
-                            text: caption,
-                        }),
-                        footer: proto.Message.InteractiveMessage.Footer.create({
-                            text: `Powered by @Syllkom`,
-                        }),
-                        header: proto.Message.InteractiveMessage.Header.create({
-                            hasMediaAttachment: true,
-                            ...(await prepareWAMessageMedia(
-                                { image: { url: `https://telegra.ph/file/735c94d39d682c53af392.jpg` } },
-                                { upload: conn.waUploadToServer },
-                            )),
-                        }),
-                        nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-                            buttons: [{
-                                "name": "review_and_pay",
-                                "buttonParamsJson": `{
-                                    "currency": "PEN",
-                                    "payment_configuration": "",
-                                    "payment_type": "",
-                                    "total_amount": {
-                                        "value": 3000000,
-                                        "offset": 100
-                                    },
-                                    "reference_id": "${referenceId}",
-                                    "type": "physical-goods",
-                                    "order": {
-                                        "status": "payment_requested",
-                                        "description": "",
-                                        "subtotal": {
-                                            "value": 300000,
-                                            "offset": 100
-                                        },
-                                        "tax": {
-                                            "value": 661,
-                                            "offset": 100
-                                        },
-                                        "discount": {
-                                            "value": 3000,
-                                            "offset": 100
-                                        },
-                                        "order_type": "ORDER",
-                                        "items": [
-                                            {
-                                                "retailer_id": "7537631592926009",
-                                                "product_id": "7538731592926009",
-                                                "name": "おSyllkom",
-                                                "amount": {
-                                                    "value": 450510,
-                                                    "offset": 1000
-                                                },
-                                                "quantity": ${totalCMD()}
-                                            }
-                                        ]
-                                    },
-                                    "additional_note": "Contacté al creador del bot\n(@Syllkom) para obtener\nel Script de XiaoBot-MD ",
-                                    "native_payment_methods": []
-                                }`
-                            }],
-                        }),
-                        contextInfo: {
-                            stanzaId: m.key.id,
-                            remoteJid: m.isGroup ? m.sender : m.key.remoteJid,
-                            participant: m.key.participant || m.sender,
-                            fromMe: m.key.fromMe,
-                            quotedMessage: m.message,
-                        },
-                    }),
-                },
-            },
-        },
-        {},
-    );
-
-   if (!m.isGroup) return conn.relayMessage(ngentod.key.remoteJid, ngentod.message, {
-        messageId: ngentod.key.id,
-    });
-    
-   if (m.isGroup) return conn.relayMessage(m.chat, {
-        "requestPaymentMessage": {
-            amount: {
-                value: 3000063,
-                offset: 100,
-                currencyCode: 'PEN'
-            },
-            amount1000: 3000063,
-            background: null,
-            currencyCodeIso4217: 'PEN',
-            expiryTimestamp: 1000000,
-            noteMessage: {
-                extendedTextMessage: {
-                    text: 'Contacté al creador del bot (@Syllkom) para obtener el Script de XiaoBot-MD ',
-                }
-            },
-            requestFrom: m.sender
-        }
-    }, {});
-}
-break
-//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 case 'yandere': {
 let user = global.db.data.users[m.sender]    
   async function YandereRandom() {
@@ -1138,13 +898,44 @@ await conn.sendMessage(m.chat, { video: { url: data.medias[0].url }, caption: gl
 }
 break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
-case 'logoneko':{
-  if (!q) return reply(`Y el nombre?`)
-  reply(mess.wait)
-  conn.sendMessage(m.chat, { image: { url: `https://api.caliph.biz.id/api/girlneko?nama=${q}&nama2=dev&apikey=CcVXxbMw`
- }, caption: `Este es el logo` }, { quoted: kom})
-}
-break
+case 'style': {
+if (!text) return reply(`Ejemplo: ${prefix + command} Syllkom`)
+  let anu = await styletext(text)
+  let txt = anu.map(a => `*${a.name}*\n${a.result}`).join`\n\n`
+	reply(txt)
+} break
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
+case 'logo': {
+    if (args.length < 1) {
+        conn.sendMessage(m.chat, { 
+            text: "Faltan argumentos. Uso correcto: *logo neko <nombre>*" 
+        });
+        break;
+    }
+
+    const firstArg = args[0].toLowerCase();
+
+    if (firstArg === 'neko') {
+        const q = args.slice(1).join(' '); 
+
+        if (!q) {
+            return conn.sendMessage(m.chat, { text: `¿Y el nombre?` });
+        }
+
+        conn.sendMessage(m.chat, { text: mess.wait });
+
+        const imageUrl = `https://api.caliph.biz.id/api/girlneko?nama=${q}&nama2=dev&apikey=CcVXxbMw`;
+
+        await conn.sendMessage(m.chat, { 
+            image: { url: imageUrl }, 
+            caption: `Este es el logo` 
+        }, { quoted: kom });
+    } else {
+        conn.sendMessage(m.chat, { 
+            text: "Argumento incorrecto. Uso correcto: *logo neko <nombre>*" 
+        });
+    }
+} break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 case 'megumin': {
     await conn.sendMessage(m.chat, { react: { text: `🕓`, key: m.key }});
@@ -1426,7 +1217,7 @@ case 'couple': case 'pareja': {
             text: `Powered by @Syllkom`
         }),
         header: proto.Message.InteractiveMessage.Header.fromObject({
-            title: '🖼️ Imagen - Hombre ♂️',
+            title: '🖼️ *Imagen - Hombre* ♂️',
             hasMediaAttachment: true,
             imageMessage: await createImage(random.male)
         }),
@@ -1448,7 +1239,7 @@ case 'couple': case 'pareja': {
             text: `Powered by @Syllkom`
         }),
         header: proto.Message.InteractiveMessage.Header.fromObject({
-            title: '🖼️ Imagen - Mujer ♀️',
+            title: '🖼️ *Imagen - Mujer* ♀️',
             hasMediaAttachment: true,
             imageMessage: await createImage(random.female)
         }),
@@ -1503,7 +1294,7 @@ if (!text) reply(`Ingrese lo que quiere buscar en Wikipedia`)
       const $ = cheerio.load(link.data)
       let wik = $('#firstHeading').text().trim()
       let resulw = $('#mw-content-text > div.mw-parser-output').find('p').text().trim()
-      reply(`*Wikipedia Search*\n\n🔎 *Buscado:* ${wik}\n\n${resulw}`)} catch (e) { reply('No se han encontrado resultados ')}
+      reply(`🔎 *Buscado:* ${wik}\n\n${resulw}`)} catch (e) { reply('No se han encontrado resultados ')}
 } break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 case 'tourl': {
@@ -1565,7 +1356,7 @@ await conn.sendMessage(m.chat, { react: { text: `☕`, key: m.key }})
 case 'spotify': case 'spotifydl': {
 if (!text) return reply(`Ejemplo: ${prefix + command} hare hare ya`);
 let api = await fetchJson(`https://api.junn4.my.id/search/spotify?query=${text}`);
-const resultados = `╭◯ *S P O T I F Y*
+const resultados = `╭◯ *𝗦 𝗣 𝗢 𝗧 𝗜 𝗙 𝗬*
 ╷📌 *Título:* ${api.data[0].title}
 ╷🚀 *Duración:* ${api.data[0].duration}
 ╷📈 *Popular:*  ${api.data[0].popularity}
@@ -1798,6 +1589,32 @@ conn.sendMessage(from, {image: {url:randomThumbnail}, caption:busqueda},{quoted:
 elorr = '*Error*'
 } break 
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
+case 'avatar': {
+    if (args.length < 1) {
+        return reply(`Faltan argumentos. Uso correcto: *anime avatar*`);
+    }
+
+    const firstArg = args[0].toLowerCase();
+
+    if (firstArg === 'anime') {
+        await conn.sendMessage(m.chat, { react: { text: `🕓`, key: m.key }});
+        
+        try {
+            let waifudd = await axios.get('https://nekos.life/api/v2/img/avatar');
+            await conn.sendMessage(m.chat, { 
+                image: { url: waifudd.data.url }, 
+                caption: 'Aquí tienes tu avatar de anime' 
+            }, { quoted: kom });
+
+            await conn.sendMessage(m.chat, { react: { text: `✅`, key: m.key }});
+        } catch (err) {
+            return reply('¡Error al obtener el avatar de anime!');
+        }
+    } else {
+        return reply(`Argumento incorrecto. Uso correcto: *anime avatar*`);
+    }
+} break
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 case 'xvid': case 'xvideo': {
 const { xvid } = require('./lib/scraper.js')
 let anu = await xvid()
@@ -1880,6 +1697,108 @@ case 'copilot': {
   conn.sendMessage(m.chat, {text: cop.result}, {quoted: kom})
 } break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
+case 'sc': case 'script': {
+    await conn.sendMessage(m.chat, { react: { text: `🕓`, key: m.key }});
+
+    try {
+        const repoUrl = 'https://api.github.com/repos/Syllkom/XiaoBot-MD';
+        let response = await axios.get(repoUrl);
+        const repo = response.data;
+
+        await conn.sendMessage(m.chat, { react: { text: `✅`, key: m.key }});
+
+        const formatSize = (sizeInKB) => {
+            const units = ['KB', 'MB', 'GB', 'TB'];
+            let size = sizeInKB;
+            let unitIndex = 0;
+            while (size >= 1024 && unitIndex < units.length - 1) {
+                size /= 1024;
+                unitIndex++;
+            }
+            return `${size.toFixed(2)} ${units[unitIndex]}`;
+        };
+
+        const info = {
+            nombre: repo.name,
+            descripcion: repo.description,
+            fechaCreacion: moment(repo.created_at).format('YYYY-MM-DD HH:mm:ss'),
+            fechaActualizacion: moment(repo.updated_at).format('YYYY-MM-DD HH:mm:ss'),
+            estrellas: repo.stargazers_count,
+            forks: repo.forks_count,
+            issues: repo.open_issues_count,
+            lenguaje: repo.language,
+            enlace: repo.html_url,
+            tamaño: formatSize(repo.size)
+        };
+
+        const mensaje = `╷ *Nombre:* ${info.nombre}
+╷ *Creado:* ${info.fechaCreacion}
+╷ *Actualización:* ${info.fechaActualizacion}
+╷ *Estrellas:* ${info.estrellas}
+╷ *Forks:* ${info.forks}
+╷ *Issues abiertas:* ${info.issues}
+╷ *Lenguaje principal:* ${info.lenguaje}
+╷ *Tamaño:* ${info.tamaño}
+╰◯
+
+*🔗 Enlace:* ${info.enlace}
+        `;
+
+        const imageMessage = await prepareWAMessageMedia({ image: { url: 'https://telegra.ph/file/e2aa067396a671d7be44e.jpg' } }, { upload: conn.waUploadToServer });
+
+        let msg = generateWAMessageFromContent(m.chat, {
+            viewOnceMessage: {
+                message: {
+                    "messageContextInfo": {
+                        "deviceListMetadata": {},
+                        "deviceListMetadataVersion": 2
+                    },
+                    interactiveMessage: proto.Message.InteractiveMessage.create({
+                        contextInfo: {
+                            mentionedJid: [m.sender],
+                            externalAdReply: {
+                                showAdAttribution: true,
+                                title: "XiaoBot-MD",
+                                body: `User: ${pushname}`,
+                                mediaUrl: syllkom,
+                                thumbnail: fs.readFileSync('./imagenes/icon.png'),
+                                mediaType: 1
+                            }
+                        },
+                        body: proto.Message.InteractiveMessage.Body.create({
+                            text: mensaje
+                        }),
+                        footer: proto.Message.InteractiveMessage.Footer.create({
+                            text: `${info.descripcion}`
+                        }),
+                        header: proto.Message.InteractiveMessage.Header.create({
+                            title: '╭◯ *𝗫𝗶𝗮𝗼𝗕𝗼𝘁-𝗠𝗗 (𝗖𝗮𝘀𝗲)*',
+                            hasMediaAttachment: true,
+                            imageMessage: imageMessage.imageMessage
+                        }),
+                        nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+                            buttons: [
+                                {
+                                    name: "cta_copy",
+                                    buttonParamsJson: `{\"display_text\":\"Copiar Enlace\",\"id\":\"123456789\",\"copy_code\":\"${info.enlace}\"}`
+                                }
+                            ]
+                        })
+                    })
+                }
+            }
+        }, { userJid: m.sender, quoted: kom });
+
+        await conn.relayMessage(msg.key.remoteJid, msg.message, {
+            messageId: msg.key.id
+        });
+    } catch (error) {
+        console.error(error);
+        await conn.sendMessage(m.chat, { react: { text: `❌`, key: m.key }});
+        reply('Ocurrió un error al obtener los datos del repositorio.');
+    }
+} break
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 case 'tinyurl': {    
 let user = global.db.data.users[m.sender]       
  if (!text) return reply(`Ejemplo: ${prefix + command} URL`)
@@ -1898,7 +1817,7 @@ await loading();
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 case 'pinterest': case 'pin': {
   await conn.sendMessage(m.chat, { react: { text: `🕓`, key: m.key }})
-  if (!text) return reply(`*Ejemplo: * ${prefix + command} Blue hour`);
+  if (!text) return reply(`*Ejemplo:* ${prefix + command} Nakano miku icon`);
   
   await loading();
   
@@ -2080,15 +1999,42 @@ case 'instagram': case 'ig': case 'igvideo': case 'igimagen': case 'igvid': case
     });
 } break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
-case 'toanime': case 'jadianime': {
-if (!quoted) return reply(`Y la foto?`)
-if (!/image/.test(mime)) return reply(`Envia una imagen y responde con ${prefix + command}`)
-await conn.sendMessage(m.chat, { react: { text: `🕓`, key: m.key }})
-await conn.sendMessage
-const media = await conn.downloadAndSaveMediaMessage(quoted)
-const anu = await TelegraPH(media)
-conn.sendMessage(m.chat, { image: { url: `https://skizo.tech/api/toanime?url=${anu}&apikey=Rustan` }, caption: `*Aqui tienes ${pushname}*`}, { quoted: kom})
-await conn.sendMessage(m.chat, { react: { text: `✅`, key: m.key }})
+case 'convertir': {
+    if (args.length < 1) {
+        conn.sendMessage(m.chat, { 
+            text: "Faltan argumentos. Uso correcto: *convertir anime*" 
+        });
+        break;
+    }
+
+    const firstArg = args[0].toLowerCase();
+
+    if (firstArg === 'anime') {
+        if (!m.quoted) return conn.sendMessage(m.chat, { text: "¿Y la foto?" });
+        
+        const mime = m.quoted.mimetype || '';
+        if (!/image/.test(mime)) {
+            return conn.sendMessage(m.chat, { 
+                text: `Envía una imagen y responde con ${prefix + 'convertir anime'}` 
+            });
+        }
+
+        await conn.sendMessage(m.chat, { react: { text: `🕓`, key: m.key }});
+
+        const media = await conn.downloadAndSaveMediaMessage(m.quoted);
+        const anu = await TelegraPH(media);
+
+        await conn.sendMessage(m.chat, { 
+            image: { url: `https://skizo.tech/api/toanime?url=${anu}&apikey=Rustan` }, 
+            caption: `*Aquí tienes ${pushname}*`
+        }, { quoted: kom });
+
+        await conn.sendMessage(m.chat, { react: { text: `✅`, key: m.key }});
+    } else {
+        conn.sendMessage(m.chat, { 
+            text: "Argumento incorrecto. Uso correcto: *convertir anime*" 
+        });
+    }
 } break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 case 'listcase': {
@@ -2099,7 +2045,7 @@ reply(listCase())
 case 'reg': case 'regis': case 'registrar': {
     if (isRegistered) return reply(`*${pushname} ya te encuentras registrado!*`)
     const serialUser = createSerial(20)
-    reg = `╭◯ *R E G I S T R A D O*
+    reg = `╭◯ *𝗥 𝗘 𝗚 𝗜 𝗦 𝗧 𝗥 𝗔 𝗗 𝗢*
 ╷✏️ *Nombre:* ${pushname}
 ╷🚩 *Estado:* Registrado ✅ 
 ╷🔢 *Ns:* ${serialUser}
@@ -2222,13 +2168,13 @@ mediaUrl: syllkom,
 sourceUrl: syllkom
 }}}, { quoted: kom })
 }
-await conn.sendVideoAsSticker(m.chat, stik, m, {
+await conn.sendVideoAsSticker(m.chat, sticker, m, {
 packname: global.ownername,
 author: global.botname
 })
 break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
-case 'sticker': case 's': case 'stickergif': case 'sgif': {
+case 'sticker': case 's': {
  if (!quoted) throw reply(`Responde a un vídeo/imagen con ${prefix + command}`)
 if (/image/.test(mime)) {
 let media = await quoted.download()
@@ -2269,14 +2215,44 @@ reply(`💤 *${m.pushName}* Estado AFK ${text ? ': ' + text : ''}`)
 }
 break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
-case "setnamegp": case "namegp": {
-if (!m.isGroup) return reply(mess.group)
-if (!isBotAdmins) return reply(mess.botadmin)
-if (!isAdmins && !isCreator) return reply(mess.admin)
-if (!text) return reply(example('Y el texto?'))
-conn.groupUpdateSubject(m.chat, text)
-reply(mess.done)}
-break
+case 'cambiar': {
+    if (args.length < 1) {
+        conn.sendMessage(m.chat, { 
+            text: "Faltan argumentos. Uso correcto:\n*1.* cambiar descripción <nuevo texto>\n*2.* cambiar nombre <nuevo texto>"
+        });
+        break;
+    }
+
+    const firstArg = args[0].toLowerCase();
+    const text = args.slice(1).join(' '); 
+
+    if (['descripción', 'descripcion', 'description'].includes(firstArg)) {
+        if (!isCreator) return reply(mess.owner);
+        if (!m.isGroup) return reply(mess.group);
+        if (!isBotAdmins) return reply(mess.badm);
+        if (!isAdmins) return reply(mess.admin);
+        if (!text) return reply(`¿Y el texto?`);
+
+        await conn.groupUpdateDescription(m.chat, text)
+            .then((res) => reply('Descripción del grupo actualizada exitosamente.'))
+            .catch((err) => reply(`Error: ${err}`));
+    }
+    else if (['nombre', 'name', 'nama', 'namae'].includes(firstArg)) {
+        if (!m.isGroup) return reply(mess.group);
+        if (!isBotAdmins) return reply(mess.badm);
+        if (!isAdmins && !isCreator) return reply(mess.admin);
+        if (!text) return reply(`¿Y el texto?`);
+
+        await conn.groupUpdateSubject(m.chat, text)
+            .then((res) => reply('Nombre del grupo actualizado exitosamente.'))
+            .catch((err) => reply(`Error: ${err}`));
+    }
+    else {
+        conn.sendMessage(m.chat, { 
+            text: "Argumento incorrecto. Uso correcto:\n*1.* cambiar descripción <nuevo texto>\n*2.* cambiar nombre <nuevo texto>"
+        });
+    }
+} break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 case "delpremium": case "delprem": {
 if (!isCreator) return reply(mess.owner)
@@ -2415,6 +2391,46 @@ case 'tiktok': case 'tt': {
     await conn.relayMessage(msg.key.remoteJid, msg.message, { messageId: msg.key.id });
 } break;
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
+case 'tts': case 'tiktoksearch': case 'ttsearch': {
+  if (!text) return reply('_¿Qué quieres buscar?_');
+  await conn.sendMessage(m.chat, { react: { text: '🔎', key: m.key } })
+  try {
+    const data = await fetchJson(`https://skizo.tech/api/tiktok-search?apikey=nanogembul&keywords=${encodeURIComponent(text)}`);
+    const videos = data;
+    if (!videos || videos.length === 0) return reply('_No se encontró ningún video_');
+    
+    const randomIndex = Math.floor(Math.random() * videos.length);
+    const video = videos[randomIndex];
+    
+    const caption = `╭◯ *𝗧 𝗜 𝗞 𝗧 𝗢 𝗞* \n╵ *Usuario:* ${video.music_info.author}\n╵ *Región:* ${video.region}\n╵ *Duración:* ${video.duration} segundos\n╵ *Likes:* ${video.digg_count}\n╵ *Comentarios:* ${video.comment_count}\n╵ *Compartidos:* ${video.share_count}\n╵ *Reproducciones:* ${video.play_count}\n╰◯\n\n${readmore}• *Título:* ${video.title}`;
+
+    const videoMessage = {
+      video: { url: video.play },
+      caption: caption,
+      jpegThumbnail: await getBuffer(video.cover),
+      contextInfo: {
+        externalAdReply: {
+          title: video.title,
+          body: `${video.music_info.author}`,
+          mediaType: 2,
+          previewType: 'PHOTO',
+          thumbnail: await getBuffer(video.cover),
+          showAdAttribution: true, 
+          mediaUrl: video.play,
+          sourceUrl: video.play
+        }
+      }
+    };
+
+    await conn.sendMessage(m.chat, videoMessage, { quoted: kom })
+    await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
+  } catch (error) {
+    console.error(error);
+    reply('_Lo siento, ocurrió un error al buscar el video de TikTok_');
+  }
+}
+break
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 case 'ttvid':
 case 'tiktokvideo':
 case 'ttvideo': {
@@ -2477,81 +2493,146 @@ let users = m?.quoted ? m?.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whats
 await conn.groupParticipantsUpdate(m?.chat, [users], 'remove').catch(console.log)
 } break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
-case 'editanime': case 'animeedit': {
-conn.sendMessage(m.chat, { react: { text: `🎐`, key: m.key }})
-const EditAnime = global.EditAnimeSendMessage();
-const responses = EditAnime;
-const response = responses[Math.floor(Math.random() * responses.length)];
+case 'edit': {
+    if (args.length < 1) {
+        conn.sendMessage(m.chat, { 
+            text: "Faltan argumentos. ¿Qué tipo de edit prefieres?\n*edit anime* o *edit phonk*" 
+        });
+        break;
+    }
 
-await conn.sendMessage(from, { 
-  video: { url: response }, 
-  caption: `🍥 *Aquí tienes*`, 
-  quoted: kom 
-})
-} break
-//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
-case 'mikunakanoicon': case 'nakanomikuicon': {
-    conn.sendMessage(m.chat, { react: { text: `💙`, key: m.key }})
-    global.nakanomiku = global.getRandomNakanoMikuMessage();
-    const MikuNakanoIcon = global.MikuNakanoIconSendMessage();
-    const responses = MikuNakanoIcon;
-    const response = responses[Math.floor(Math.random() * responses.length)]
+    const firstArg = args[0].toLowerCase();
+    let videoUrl;
+    let captionText;
+    let reactText;
 
-    const imageMessage = await prepareWAMessageMedia({ image: { url: response } }, { upload: conn.waUploadToServer });
+    if (firstArg === 'anime') {
+        reactText = `🎐`;
 
-    let msg = generateWAMessageFromContent(m.chat, {
-        viewOnceMessage: {
-            message: {
-                "messageContextInfo": {
-                    "deviceListMetadata": {},
-                    "deviceListMetadataVersion": 2
-                },
-                interactiveMessage: proto.Message.InteractiveMessage.create({
-                    contextInfo: {
-                        mentionedJid: [m.sender],
-                        externalAdReply: {
-                            showAdAttribution: true,
-                            title: "XiaoBot-MD",
-                            body: `User: ${pushname}`,
-                            mediaUrl: syllkom,
-                            thumbnail: fs.readFileSync('./imagenes/icon.png'),
-                            mediaType: 1
-                        }
-                    },
-                    body: proto.Message.InteractiveMessage.Body.create({
-                        text: `🖼️ *Icon - Miku Nakano* 💙\n\n• ¿Sabias que? ${nakanomiku}`
-                    }),
-                    footer: proto.Message.InteractiveMessage.Footer.create({
-                        text: `Powered By @Syllkom`
-                    }),
-                    header: proto.Message.InteractiveMessage.Header.create({
-                        title: '',
-                        hasMediaAttachment: true,
-                        imageMessage: imageMessage.imageMessage
-                    }),
-                    nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-                        buttons: [
-                            {
-                                name: "quick_reply",
-                                buttonParamsJson: `{\"display_text\":\"Siguiente\",\"id\":\"mikunakanoicon\"}`
-                            }
-                        ]
-                    })
-                })
-            }
-        }
-    }, { userJid: m.sender, quoted: kom });
-    await conn.relayMessage(msg.key.remoteJid, msg.message, {
-        messageId: msg.key.id
+        const EditAnime = global.EditAnimeSendMessage();
+        const responses = EditAnime;
+        videoUrl = responses[Math.floor(Math.random() * responses.length)];
+
+        captionText = `🍥 *Aquí tienes ${pushname}*`;
+    } else if (firstArg === 'phonk') {
+        reactText = `🧨`;
+
+        const EditAnimePhonk = global.EditAnimePhonkSendMessage();
+        const responses = EditAnimePhonk;
+        videoUrl = responses[Math.floor(Math.random() * responses.length)];
+
+        captionText = `💀 *Aquí tienes ${pushname}*`;
+    } else {
+        conn.sendMessage(m.chat, { 
+            text: "Argumento incorrecto. Uso correcto:\n*edit anime* o *edit phonk*" 
+        });
+        break;
+    }
+
+    conn.sendMessage(m.chat, { react: { text: reactText, key: m.key }});
+
+    await conn.sendMessage(m.chat, { 
+        video: { url: videoUrl }, 
+        caption: captionText,
+        contextInfo: { quotedMessage: m.message }
     });
 } break;
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
-case 'linkgrupo': case 'linkgp': {
-if (!isCreator) return reply(mess.owner)
-if (!m.isGroup) return reply(mess.group)
-if (!isBotAdmins) return reply(mess.badm)
-let response = await conn.groupInviteCode(from)
-conn.sendText(from, `https://chat.whatsapp.com/${response}\n\nEnlaces de grupo: ${groupMetadata.subject}`, m, { detectLink: true })
+case 'nakano': {
+    if (args.length < 2) {
+        conn.sendMessage(m.chat, { text: "Faltan argumentos. Uso correcto: miku <nakano> <icon>" });
+        break;
+    }
+
+    const firstArg = args[0].toLowerCase();
+    const secondArg = args[1].toLowerCase();
+
+    if (firstArg === 'miku' && secondArg === 'icon') {
+        conn.sendMessage(m.chat, { react: { text: '💙', key: m.key }});
+        
+        global.nakanomiku = global.getRandomNakanoMikuMessage();
+        const MikuNakanoIcon = global.MikuNakanoIconSendMessage();
+        const responses = MikuNakanoIcon;
+        const response = responses[Math.floor(Math.random() * responses.length)];
+
+        const imageMessage = await prepareWAMessageMedia({ image: { url: response } }, { upload: conn.waUploadToServer });
+
+        let msg = generateWAMessageFromContent(m.chat, {
+            viewOnceMessage: {
+                message: {
+                    "messageContextInfo": {
+                        "deviceListMetadata": {},
+                        "deviceListMetadataVersion": 2
+                    },
+                    interactiveMessage: proto.Message.InteractiveMessage.create({
+                        contextInfo: {
+                            mentionedJid: [m.sender],
+                            externalAdReply: {
+                                showAdAttribution: true,
+                                title: "TanjunBot-MD",
+                                body: `User: ${pushname}`,
+                                mediaUrl: syllkom,
+                                thumbnail: fs.readFileSync('./imagenes/icon.png'),
+                                mediaType: 1
+                            }
+                        },
+                        body: proto.Message.InteractiveMessage.Body.create({
+                            text: `🖼️ *Icon - Miku Nakano* 💙\n\n*• ¿Sabias que?* ${nakanomiku}`
+                        }),
+                        footer: proto.Message.InteractiveMessage.Footer.create({
+                            text: 'Powered By @Syllkom'
+                        }),
+                        header: proto.Message.InteractiveMessage.Header.create({
+                            title: '',
+                            hasMediaAttachment: true,
+                            imageMessage: imageMessage.imageMessage
+                        }),
+                        nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+                            buttons: [
+                                {
+                                    name: "quick_reply",
+                                    buttonParamsJson: `{\"display_text\":\"Siguiente\",\"id\":\"nakano miku icon\"}`
+                                }
+                            ]
+                        })
+                    })
+                }
+            }
+        }, { userJid: m.sender, quoted: kom });
+
+        await conn.relayMessage(msg.key.remoteJid, msg.message, {
+            messageId: msg.key.id
+        });
+    } else {
+        conn.sendMessage(m.chat, { text: "Combinación de argumentos incorrecta. Uso correcto: Nakano <Miku> <icon>" });
+    }
+} break
+//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
+case 'enlace': {
+    if (args.length < 2) {
+        conn.sendMessage(m.chat, { 
+            text: "Faltan argumentos. Uso correcto: *enlace del grupo*"
+        });
+        break;
+    }
+
+    const firstArg = args[0].toLowerCase();
+    const secondArg = args[1].toLowerCase();
+
+    if (firstArg === 'del' && secondArg === 'grupo') {
+        if (!isCreator) return reply(mess.owner);
+        if (!m.isGroup) return reply(mess.group);
+        if (!isBotAdmins) return reply(mess.badm);
+
+        let response = await conn.groupInviteCode(m.chat);
+        conn.sendMessage(m.chat, { 
+            text: `https://chat.whatsapp.com/${response}\n\nEnlace del grupo: ${groupMetadata.subject}`
+        }, { detectLink: true });
+    } else {
+        conn.sendMessage(m.chat, { 
+            text: "Argumentos incorrectos. Uso correcto: *enlace del grupo*"
+        });
+    }
 } break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 case 'group': case 'grupo': { 
@@ -2680,7 +2761,7 @@ case 'youtubesearch': {
     
     const res = await yts.search(text);
     const resultados = pickRandom(res.all);
-    const PlayResultados = `╭◯ *Y T - S E A R C H T*\n╷📌 *Titulo:* ${resultados.title}\n╷🚀 *Canal:* ${resultados.author.name}\n╷⏳ Duración: ${resultados.seconds} segundos (${resultados.timestamp})\n╷🔗 Enlace: ${resultados.url}\n╰◯\n\n *🧾 Descripción:*${readmore} ${resultados.description}`;
+    const PlayResultados = `╭◯ *𝗬 𝗧 - 𝗦 𝗘 𝗔 𝗥 𝗖 𝗛*\n╷📌 *Titulo:* ${resultados.title}\n╷🚀 *Canal:* ${resultados.author.name}\n╷⏳ Duración: ${resultados.seconds} segundos (${resultados.timestamp})\n╷🔗 Enlace: ${resultados.url}\n╰◯\n\n *🧾 Descripción:*${readmore} ${resultados.description}`;
     
     let msg = generateWAMessageFromContent(m.chat, {
         viewOnceMessage: {
@@ -2756,7 +2837,7 @@ case 'wallpaper': {
 if (!text) return m.reply(`Example: ${prefix + command} Xiao`)
 let anu = await wallpaper(text)
 let result = pickRandom(anu)
-await conn.sendMessage(m.chat, { image: { url: result.image[0] }, caption: `╭◯ *W A L L P A P E R*\n╷ Título: ${q}\n╷ Categoria: ${result.type}\n╰◯Media url: ${result.image[2] || result.image[1] || result.image[0]}\n\n• Usa el comando "HD" pará mejorar la calidad de la imagen`}, { quoted: kom })
+await conn.sendMessage(m.chat, { image: { url: result.image[0] }, caption: `╭◯ *𝗪 𝗔 𝗟 𝗟 𝗣 𝗔 𝗣 𝗘 𝗥*\n╷ Título: ${q}\n╷ Categoria: ${result.type}\n╰◯Media url: ${result.image[2] || result.image[1] || result.image[0]}\n\n• Usa el comando "HD" pará mejorar la calidad de la imagen`}, { quoted: kom })
 } break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 case 'ytmp3': case 'ytaudio': case 'ytplayaudio': case 'yta': {
@@ -2889,7 +2970,7 @@ await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 case 'tagall': case 'todos': case 'invocar': {
     if (!isAdmins && !isGroupOwner && !isCreator) return;
-    let teks = `*👥 Invocando al grupo ⛩️*\n\n👀 *Invocador:* ${pushname}\n💬 *Mensaje:* ${q ? q : 'UwU'}\n${readmore}\n`;
+    let teks = `*⛩️ ✦ 𝗜 𝗡 𝗩 𝗢 𝗖 𝗔 𝗡 𝗗 𝗢 ✦ 👻*\n\n👀 *Invocador:* ${pushname}\n💬 *Mensaje:* ${q ? q : 'UwU'}\n${readmore}\n`;
     for (let mem of participants) {
         teks += `- @${mem.id.split('@')[0]}\n`;
     }
@@ -2909,20 +2990,47 @@ conn.sendMessage(m.chat, {
 })
 break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
-case 'getcase': {
-const getCase = (cases) => {
-return "case "+`'${cases}'`+fs.readFileSync("./kom.js").toString().split('case \''+cases+'\'')[1].split("break")[0]+"break"
-}
-try{
-if (!isCreator) return reply('Qué estás haciendo? 😅')
-if (!q) return reply(`Ejemplo: ${prefix + command} antilink`)
-let nana = await getCase(q)
-reply(nana)
-} catch(err){
-console.log(err)
-reply(`Case ${q} extraído ✅`)
-  }
-} break 
+case 'obtener': {
+    if (args.length < 1) {
+        conn.sendMessage(m.chat, { 
+            text: "Faltan argumentos. Uso correcto: *obtener case <nombre del case>*" 
+        });
+        break;
+    }
+
+    const firstArg = args[0].toLowerCase();
+    const caseName = args.slice(1).join(' ')
+
+    if (firstArg === 'case') {
+        if (!isCreator) return reply('¿Qué estás haciendo? 😅');
+        if (!caseName) return reply(`Ejemplo: ${prefix}obtener case <nombre del case>`);
+
+        try {
+            const getCase = (cases) => {
+                const data = fs.readFileSync("./kom.js", "utf8");
+                const caseStart = data.indexOf(`case '${cases}':`);
+                
+                if (caseStart === -1) {
+                    return `No se encontró el case '${cases}'.`;
+                }
+
+                const caseContent = data.slice(caseStart, data.indexOf("break", caseStart) + 5);
+                return caseContent;
+            };
+
+            const caseContent = getCase(caseName);
+            reply(caseContent);
+
+        } catch (err) {
+            console.error(err);
+            reply(`Se produjo un error al extraer el case '${caseName}'.`);
+        }
+    } else {
+        conn.sendMessage(m.chat, { 
+            text: "Argumento incorrecto. Uso correcto: *obtener case <nombre del case>*" 
+        });
+    }
+} break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 case 'setppbot': case 'profilebot': {
 await conn.sendMessage(m.chat, { react: { text: `🕑`, key: m.key }})
@@ -3006,22 +3114,60 @@ let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsap
 await conn.groupParticipantsUpdate(m.chat, [users], 'demote').catch(console.log)
 } break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
-case 'sendlinkgp': {
-if (!isCreator) return reply(mess.owner)
-if (!m.isGroup) return reply(mess.group)
-if (!isBotAdmins) return reply(mess.badm)
-if (!args[0]) return reply(`Ejemplo: ${prefix+command} Numero\nEjemplo: ${prefix+command} 51933479416`)
-bnnd = text.split("|")[0]+'@s.whatsapp.net'
-let response = await conn.groupInviteCode(from)
-conn.sendText(bnnd, `https://chat.whatsapp.com/${response}\n\nEnlace del grupo: ${groupMetadata.subject}`, m, { detectLink: true })
+case 'enviar': {
+    if (args.length < 1) {
+        conn.sendMessage(m.chat, { 
+            text: "Faltan argumentos. Uso correcto: *enviar enlace <número>*" 
+        });
+        break;
+    }
+
+    const firstArg = args[0].toLowerCase();
+
+    if (firstArg === 'enlace') {
+        if (!isCreator) return reply(mess.owner);
+        if (!m.isGroup) return reply(mess.group);
+        if (!isBotAdmins) return reply(mess.badm);
+        if (!args[1]) return reply(`Ejemplo: ${prefix}enviar enlace <número>\nEjemplo: ${prefix}enviar enlace 51933479416`);
+
+        const bnnd = args[1] + '@s.whatsapp.net';
+        let response = await conn.groupInviteCode(m.chat);
+
+        await conn.sendMessage(bnnd, { 
+            text: `https://chat.whatsapp.com/${response}\n\n*Enlace del grupo*: ${groupMetadata.subject}`
+        });
+    } else {
+        conn.sendMessage(m.chat, { 
+            text: "Argumento incorrecto. Uso correcto: *enviar enlace <número>*" 
+        });
+    }
 } break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
-case 'resetlinkgp':
-if (!isCreator) return reply(mess.owner)
-if (!m.isGroup) return reply(mess.group)
-if (!isBotAdmins) return reply(mess.badm)
-conn.groupRevokeInvite(from)
-break
+case 'restablecer': {
+    if (args.length < 1) {
+        conn.sendMessage(m.chat, { 
+            text: "Faltan argumentos. Uso correcto: *restablecer enlace*" 
+        });
+        break;
+    }
+
+    const firstArg = args[0].toLowerCase();
+
+    if (firstArg === 'enlace') {
+        if (!isCreator) return reply(mess.owner);
+        if (!m.isGroup) return reply(mess.group);
+        if (!isBotAdmins) return reply(mess.badm);
+
+        await conn.groupRevokeInvite(m.chat);
+        conn.sendMessage(m.chat, { 
+            text: "El enlace del grupo ha sido restablecido correctamente." 
+        });
+    } else {
+        conn.sendMessage(m.chat, { 
+            text: "Argumento incorrecto. Uso correcto: *restablecer enlace*" 
+        });
+    }
+} break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 case 'join':{
  if (!isCreator)
@@ -3031,43 +3177,99 @@ case 'join':{
  reply(`*${botname} se unio correctamente a tu grupo.*`)
  } break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
-case 'addcase': {
- if (!isCreator) return reply('Que haces? 😅')
- if (!text) return reply('¿Dónde está el case?');
-const fs = require('fs');
-const namaFile = 'kom.js';
-const caseBaru = `${text}`;
-fs.readFile(namaFile, 'utf8', (err, data) => {
-if (err) {
-console.error('Se produjo un error al leer el archivo.:', err);
-return;
-}
-const posisiAwalGimage = data.indexOf("case 'addcase':");
+case 'añadir': {
+    if (args.length < 1) {
+        conn.sendMessage(m.chat, { 
+            text: "Faltan argumentos. Uso correcto: *añadir case <código del case>*" 
+        });
+        break;
+    }
 
-if (posisiAwalGimage !== -1) {
-const kodeBaruLengkap = data.slice(0, posisiAwalGimage) + '\n' + caseBaru + '\n' + data.slice(posisiAwalGimage);
-fs.writeFile(namaFile, kodeBaruLengkap, 'utf8', (err) => {
-if (err) {
-reply('Se produjo un error al escribir el archivo.:', err);
-} else {
-reply('Nuevo case agregado exitosamente.');
-}
-});
-} else {
-reply('No se puede agregar un nuevo case en el archivo.');
-}
-});
-}
-break
+    const firstArg = args[0].toLowerCase();
+
+    if (firstArg === 'case') {
+        if (!isCreator) return reply('¿Qué haces? 😅');
+        if (!text) return reply('¿Dónde está el case?');
+
+        const fs = require('fs');
+        const nameFile = 'kom.js';
+        const newCase = `${text}`;
+
+        fs.readFile(nameFile, 'utf8', (err, data) => {
+            if (err) {
+                console.error('Se produjo un error al leer el archivo:', err);
+                return reply('Se produjo un error al leer el archivo.');
+            }
+
+            const posicionCaseAdd = data.indexOf("case 'addcase':");
+
+            if (posicionCaseAdd !== -1) {
+                const nuevoContenido = data.slice(0, posicionCaseAdd) + '\n' + newCase + '\n' + data.slice(posicionCaseAdd);
+
+                fs.writeFile(nameFile, nuevoContenido, 'utf8', (err) => {
+                    if (err) {
+                        return reply('Se produjo un error al escribir el archivo.');
+                    } else {
+                        return reply('Nuevo case agregado exitosamente.');
+                    }
+                });
+            } else {
+                return reply('No se puede agregar un nuevo case en el archivo.');
+            }
+        });
+    } else {
+        conn.sendMessage(m.chat, { 
+            text: "Argumento incorrecto. Uso correcto: *añadir case <código del case>*" 
+        });
+    }
+} break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
-case 'delcase': {
-if (!isCreator) return reply(`*Acceso denegado*\n\n*Solo propietarios*`)
-if (!q) return reply('*Ingrese el nombre del case a eliminar*')
+case 'del': {
+    if (args.length < 1) {
+        conn.sendMessage(m.chat, { 
+            text: "Faltan argumentos. Uso correcto: *eliminar case <nombre del case>*" 
+        });
+        break;
+    }
 
-dellCase('./kom.js', q)
-reply('*Se elimino el case correctamente* ✅')
-}
-break
+    const firstArg = args[0].toLowerCase();
+    const caseName = args.slice(1).join(' ')
+
+    if (firstArg === 'case') {
+        if (!isCreator) return reply('*Acceso denegado*\n\n*Solo propietarios*');
+        if (!caseName) return reply('*Ingrese el nombre del case a eliminar*');
+
+        const fs = require('fs');
+        const filePath = './kom.js';
+        
+        fs.readFile(filePath, 'utf8', (err, data) => {
+            if (err) {
+                console.error('Error al leer el archivo:', err);
+                return reply('Se produjo un error al leer el archivo.');
+            }
+            const caseRegex = new RegExp(`case '${caseName}':[\\s\\S]*?break;`, 'g');
+
+            if (!caseRegex.test(data)) {
+                return reply(`No se encontró un case con el nombre *${caseName}*.`);
+            }
+
+            const updatedData = data.replace(caseRegex, '');
+
+            fs.writeFile(filePath, updatedData, 'utf8', (err) => {
+                if (err) {
+                    console.error('Error al escribir el archivo:', err);
+                    return reply('Se produjo un error al escribir el archivo.');
+                } else {
+                    return reply('*Se eliminó el case correctamente* ✅');
+                }
+            });
+        });
+    } else {
+        conn.sendMessage(m.chat, { 
+            text: "Argumento incorrecto. Uso correcto: *eliminar case <nombre del case>*" 
+        });
+    }
+} break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 case "public": {
 if (!isCreator) return reply(mess.owner)
@@ -3106,16 +3308,6 @@ const { remini } = require('./lib/remini')
        let proses = await remini(media, "enhance");
   conn.sendMessage(m.chat, { image: proses, caption:"Aqui tienes, tu imagen en HD"}, { quoted: kom})
   await conn.sendMessage(m.chat, { react: { text: `✅`, key: m.key }})
-break
-//===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
-case 'setdesc':{
-if (!isCreator) return reply(mess.owner)
-if (!m.isGroup) return reply(mess.group)
-if (!isBotAdmins) return reply(mess.badm)
-if (!isAdmins) return reply(mess.admin)
-if (!text) return reply(`Y el texto?`)
-await conn.groupUpdateDescription(from, text).then((res)).catch((err) => reply(jsonformat(err)))
-}
 break
 //===•===•===•===•===•===•===•===•===•===•===•===•===•===•====•===/>
 case 'loli':{
@@ -3162,7 +3354,17 @@ let msgs = global.db.data.database
 if (!(budy.toLowerCase() in msgs)) return
 cha.copyNForward(from, msgs[budy.toLowerCase()], true)}}
 } catch (err) {
-console.log(util.format(err))}}
+    console.log(util.format(err))
+    let e = String(err)
+    conn.sendMessage(`${global.owner}@s.whatsapp.net`, {
+      text: "Hola desarrollador, hay una función de error " + util.format(e),
+      contextInfo: {
+        forwardingScore: 9999999,
+        isForwarded: true
+      }
+    })
+  }
+}
 //=================================================//
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {

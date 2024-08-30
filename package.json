@@ -1,6 +1,6 @@
 {
   "name": "XiaoBot-MD",
-  "version": "1.0.0",
+  "version": "0.3",
   "description": "Simple WhatsApp bot",
   "main": "index.js",
   "scripts": {
@@ -17,11 +17,13 @@
     "@tobyg74/tiktok-api-dl": "^1.1.2",
     "@vitalets/google-translate-api": "^9.2.0",
     "@bochilteam/scraper-sosmed": "^1.0.5",
-    "@whiskeysockets/baileys": "^6.6.0",
+    "@adiwajshing/keyed-db": "^0.2.4",
+    "@hapi/boom": "^10.0.1",
+    "@whiskeysockets/baileys": "latest",
+    "awesome-phonenumber": "^2.64.0",
     "scrape-primbon": "^1.1.0",
     "acrcloud": "^1.4.0",
     "api-dylux": "^1.7.2",
-    "awesome-phonenumber": "^5.10.0",
     "axios": "^1.6.0",
     "base-64": "^1.0.0",
     "base32": "^0.0.7",
