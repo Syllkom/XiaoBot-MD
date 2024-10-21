@@ -17,7 +17,7 @@
         <a href="https://github.com/Syllkom"><img title="Followers" src="https://img.shields.io/github/followers/DyrKom?color=red&style=flat-square"></a>
         <a href="https://github.com/Syllkom/XiaoBot-MD/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/DyrKom/XiaoBot-MD?color=red&style=flat-square"></a>
         <a href="https://github.com/Syllkom/XiaBot-MD/network/members"><img title="Forks" src="http://img.shields.io/github/forks/Syllkom/XiaoBot-MD?color=red&style=flat-square"></a>
-        <a href="#"><img src="https://img.shields.io/badge/MANTENIMIENTO-SI-blue.svg"</a>
+        <a href="#"><img src="https://img.shields.io/badge/MANTENIMIENTO-NO-blue.svg"</a>
         <img src="https://img.shields.io/github/repo-size/Syllkom/XiaoBot-MD" /> <br>
    </p>
    <p>
